@@ -4,6 +4,8 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -23,6 +25,8 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
