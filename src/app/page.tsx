@@ -2,7 +2,7 @@ import RedditPostStack from "@/components/reddit-post-stack";
 import { api, HydrateClient } from "@/trpc/server";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+  const hello = await api.post.hello({ text: "from Mahdi" });
 
   void api.post.getLatest.prefetch();
 
