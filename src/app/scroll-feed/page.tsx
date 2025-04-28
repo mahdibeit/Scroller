@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import RedditPostStack from "@/components/reddit-post-stack";
 
 export default function Page2() {
