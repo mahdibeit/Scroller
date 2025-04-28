@@ -16,7 +16,7 @@ export interface Item {
 export async function GET(req: Request) {
   // Parse ?cursor=...&limit=... from URL
   const { searchParams } = new URL(req.url);
-  const limit = parseInt(searchParams.get("limit") ?? "2", 10);
+  const limit = parseInt(searchParams.get("limit") ?? "6", 10);
   const cursor = parseInt(searchParams.get("cursor") ?? "0", 10);
 
   const filePath = path.join(process.cwd(), "public", "items-large.json");
