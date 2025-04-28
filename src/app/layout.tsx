@@ -1,11 +1,10 @@
 import "@/styles/globals.css";
-
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
-
-import { TRPCReactProvider } from "@/trpc/react";
+import ClientProviders from "@/components/client-providers";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -24,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Navbar />
+        <ClientProviders>{children}</ClientProviders>
         <Analytics />
         <SpeedInsights />
       </body>
