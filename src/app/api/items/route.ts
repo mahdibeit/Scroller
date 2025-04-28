@@ -28,5 +28,14 @@ export async function GET(req: Request) {
   const data = all.slice(start, start + limit);
   const nextCursor = data.length === limit ? start + data.length : undefined;
 
-  return NextResponse.json({ data, nextCursor });
+  return NextResponse.json(
+    { data, nextCursor },
+    {
+      status: 200,
+      headers: {
+        // Double-safety: no-store at the HTTP layer
+        "Cache-Control": "no-store, max-age=0, s-maxage=0",
+      },
+    },
+  );
 }
