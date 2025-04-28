@@ -35,11 +35,12 @@ export default function Feed() {
     initialPageParam: 0,
   });
 
-  const { ref, inView } = useInView({});
+  const { ref, inView } = useInView({ rootMargin: "200px", threshold: 0 });
 
   // When that sentinel scrolls into view, load the next page:
 
   useEffect(() => {
+    console.log("sentinel inView?", inView, "hasNextPage?", hasNextPage);
     if (inView && hasNextPage) {
       void fetchNextPage(); // void to explicitly ignore the returned promise
     }

@@ -33,8 +33,7 @@ export async function GET(req: Request) {
     {
       status: 200,
       headers: {
-        // Double-safety: no-store at the HTTP layer
-        "Cache-Control": "no-store, max-age=0, s-maxage=0",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
       },
     },
   );
