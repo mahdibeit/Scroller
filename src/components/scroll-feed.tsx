@@ -11,7 +11,7 @@ async function fetchItems({ pageParam = 0 }): Promise<{
   data: Item[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/items?cursor=${pageParam}&limit=2`, {
+  const res = await fetch(`/api/items?cursor=${pageParam}&limit=6`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to load items");
