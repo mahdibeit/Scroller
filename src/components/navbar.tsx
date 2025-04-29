@@ -1,21 +1,118 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ShoppingBag, Menu, X, Heart, Home, Compass } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const routes = [
+    {
+      name: "Home",
+      path: "/",
+      icon: Home,
+    },
+    {
+      name: "Feed",
+      path: "/feed",
+      icon: Compass,
+    },
+    // {
+    //   name: "Saved",
+    //   path: "/saved",
+    //   icon: Heart,
+    // },
+    // {
+    //   name: "Notifications",
+    //   path: "/notifications",
+    //   icon: Bell,
+    // },
+    // {
+    //   name: "Profile",
+    //   path: "/profile",
+    //   icon: User,
+    // },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-gray-900 text-white shadow-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <h1 className="text-xl font-bold">
-          <Link href="/">My App</Link>
-        </h1>
-        <div className="space-x-4">
-          <Link href="/scroll-feed" className="hover:underline">
-            Scroll Feed
-          </Link>
-          <Link href="/wheel-feed" className="hover:underline">
-            Wheel Feed
-          </Link>
+    <>
+      {/* Desktop Navbar */}
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="container mx-auto flex h-14 items-center px-4">
+          <div className="mr-4 flex">
+            <Link href="/" className="mr-6 flex items-center space-x-2">
+              <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-xl font-bold text-transparent">
+                ScrollCart
+              </span>
+            </Link>
+          </div>
+
+          <div className="hidden md:flex md:flex-1">
+            <nav className="flex items-center space-x-6 text-sm font-medium">
+              {routes.map((route) => (
+                <Link
+                  key={route.path}
+                  href={route.path}
+                  className={cn(
+                    "hover:text-foreground/80 transition-colors",
+                    pathname === route.path
+                      ? "text-foreground font-semibold"
+                      : "text-foreground/60",
+                  )}
+                >
+                  {route.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex flex-1 items-center justify-end space-x-4">
+            <nav className="flex items-center space-x-2">
+              <Button variant="ghost" size="icon" className="hidden md:flex">
+                <Heart className="h-5 w-5" />
+                <span className="sr-only">Saved Items</span>
+              </Button>
+              <Button variant="ghost" size="icon" className="hidden md:flex">
+                <ShoppingBag className="h-5 w-5" />
+                <span className="sr-only">Cart</span>
+              </Button>
+
+              <Avatar className="md:flex">
+                <AvatarFallback>SC</AvatarFallback>
+              </Avatar>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 z-50 w-full border-t bg-white md:hidden">
+        <div className="flex h-16 items-center justify-around">
+          {routes.map((route) => {
+            const Icon = route.icon;
+            return (
+              <Link
+                key={route.path}
+                href={route.path}
+                className={cn(
+                  "flex h-full flex-1 flex-col items-center justify-center",
+                  pathname === route.path ? "text-pink-500" : "text-gray-500",
+                )}
+              >
+                <Icon className="h-5 w-5" />
+                <span className="mt-1 text-xs">{route.name}</span>
+              </Link>
+            );
+          })}
         </div>
       </div>
-    </nav>
+    </>
   );
 }

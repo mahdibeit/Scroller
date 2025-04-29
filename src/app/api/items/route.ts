@@ -4,14 +4,7 @@ export const fetchCache = "force-no-store";
 import { NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-
-export interface Item {
-  asin: string;
-  title: string;
-  image: string;
-  price: string;
-  link: string;
-}
+import type { Item } from "@/lib/types";
 
 export async function GET(req: Request) {
   // Parse ?cursor=...&limit=... from URL

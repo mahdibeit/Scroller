@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import ScrollFeed from "@/components/scroll-feed";
+import ScrollFeed from "@/components/feed";
 
 export default function Page1() {
   return (

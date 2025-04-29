@@ -4,8 +4,8 @@
 import React, { useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import type { Item } from "@/app/api/items/route";
-import ProductCard from "@/components/ProductCard";
+import type { Item } from "@/lib/types";
+import ProductCardNew from "./ProductCard";
 
 async function fetchItems({ pageParam = 0 }): Promise<{
   data: Item[];
@@ -14,7 +14,9 @@ async function fetchItems({ pageParam = 0 }): Promise<{
   const res = await fetch(`/api/items?cursor=${pageParam}&limit=6`, {
     cache: "no-store",
   });
-  if (!res.ok) throw new Error("Failed to load items");
+  if (!res.ok) {
+    throw new Error("Failed to load items");
+  }
   return res.json() as Promise<{ data: Item[]; nextCursor?: number }>;
 }
 
@@ -37,7 +39,7 @@ export default function Feed() {
 
   const { ref, inView } = useInView({ rootMargin: "200px", threshold: 0 });
 
-  // When that sentinel scrolls into view, load the next page:
+  // When that sentinel scrolls into view, load the next page
 
   useEffect(() => {
     console.log("sentinel inView?", inView, "hasNextPage?", hasNextPage);
@@ -62,7 +64,7 @@ export default function Feed() {
   return (
     <div className="grid grid-rows-1 gap-4 p-4 md:grid-cols-1">
       {allItems.map((item) => (
-        <ProductCard key={item.asin} {...item} />
+        <ProductCardNew key={item.asin} {...item} />
       ))}
 
       {/* 8. This div is the “sentinel” that triggers more loading */}
