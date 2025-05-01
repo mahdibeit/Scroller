@@ -46,7 +46,7 @@ export default function ProductCard({
   return (
     <div className="mb-4 w-full snap-start overflow-hidden rounded-xl bg-white shadow-md">
       {/* Image */}
-      <div className="relative h-[300px] max-h-[450px] w-full">
+      <div className="w-full">
         <a
           href={link}
           target="_blank"
@@ -56,8 +56,9 @@ export default function ProductCard({
           <Image
             src={image}
             alt={title}
-            fill
-            className="bg-white object-contain"
+            width={500} // base width for Next.js’s aspect‐ratio calc
+            height={500} // base height for Next.js’s aspect‐ratio calc
+            className="h-auto max-h-[450px] w-full object-contain"
             sizes="(max-width: 768px) 100vw, 500px"
             priority
           />

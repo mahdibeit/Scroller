@@ -2,10 +2,12 @@ export const dynamic = "force-dynamic";
 
 import ScrollFeed from "@/components/feed";
 
-export default function Page1() {
+export default function FeedPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gray-800 text-white">
-      <ScrollFeed />
+      <div className="mx-auto flex w-full flex-col items-center">
+        <ScrollFeed />
+      </div>
     </main>
   );
 }

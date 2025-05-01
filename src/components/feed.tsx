@@ -62,18 +62,20 @@ export default function Feed() {
   const allItems = data.pages.flatMap((page) => page.data);
 
   return (
-    <div className="grid grid-rows-1 gap-4 p-4 md:grid-cols-1">
-      {allItems.map((product) => (
-        <ProductCard key={product.asin} {...product} />
-      ))}
+    <div className="grid grid-rows-1 items-center justify-center gap-4 p-4 md:grid-cols-1">
+      <div className="grid grid-cols-1 items-center justify-center gap-4 p-4">
+        {allItems.map((product) => (
+          <ProductCard key={product.asin} {...product} />
+        ))}
 
-      {/* 8. This div is the “sentinel” that triggers more loading */}
-      <div ref={ref} className="col-span-full py-4 text-center">
-        {isFetchingNextPage
-          ? "Loading more…"
-          : hasNextPage
-            ? "Scroll to load more"
-            : "— End of feed —"}
+        {/* 8. This div is the “sentinel” that triggers more loading */}
+        <div ref={ref} className="col-span-full py-4 text-center">
+          {isFetchingNextPage
+            ? "Loading more…"
+            : hasNextPage
+              ? "Scroll to load more"
+              : "— End of feed —"}
+        </div>
       </div>
     </div>
   );
