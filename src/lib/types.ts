@@ -1,4 +1,4 @@
-export interface Item {
+export interface Product {
   asin: string;
   title: string;
   image: string;

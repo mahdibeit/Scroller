@@ -5,6 +5,8 @@ import ClientProviders from "@/components/client-providers";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/navbar";
+import { CartProvider } from "@/context/cart-context";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "ScrollCart - Scroll. Shop. Smile.",
@@ -23,8 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <body>
-        <Navbar />
-        <ClientProviders>{children}</ClientProviders>
+        <Toaster />
+        <CartProvider>
+          <Navbar />
+          <ClientProviders>{children}</ClientProviders>
+        </CartProvider>
         <Analytics />
         <SpeedInsights />
       </body>

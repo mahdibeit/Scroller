@@ -4,20 +4,20 @@
 import React, { useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import type { Item } from "@/lib/types";
-import ProductCardNew from "./ProductCard";
+import type { Product } from "@/lib/types";
+import ProductCard from "./ProductCard";
 
 async function fetchItems({ pageParam = 0 }): Promise<{
-  data: Item[];
+  data: Product[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/items?cursor=${pageParam}&limit=6`, {
+  const res = await fetch(`/api/products?cursor=${pageParam}&limit=6`, {
     cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to load items");
   }
-  return res.json() as Promise<{ data: Item[]; nextCursor?: number }>;
+  return res.json() as Promise<{ data: Product[]; nextCursor?: number }>;
 }
 
 export default function Feed() {
@@ -31,7 +31,7 @@ export default function Feed() {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["items"],
+    queryKey: ["Products"],
     queryFn: fetchItems,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,
@@ -63,8 +63,8 @@ export default function Feed() {
 
   return (
     <div className="grid grid-rows-1 gap-4 p-4 md:grid-cols-1">
-      {allItems.map((item) => (
-        <ProductCardNew key={item.asin} {...item} />
+      {allItems.map((product) => (
+        <ProductCard key={product.asin} {...product} />
       ))}
 
       {/* 8. This div is the “sentinel” that triggers more loading */}

@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, Menu, X, Heart, Home, Compass } from "lucide-react";
+import { Heart, Home, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { CartIcon } from "@/components/cart-icon";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -24,21 +22,11 @@ export default function Navbar() {
       path: "/feed",
       icon: Compass,
     },
-    // {
-    //   name: "Saved",
-    //   path: "/saved",
-    //   icon: Heart,
-    // },
-    // {
-    //   name: "Notifications",
-    //   path: "/notifications",
-    //   icon: Bell,
-    // },
-    // {
-    //   name: "Profile",
-    //   path: "/profile",
-    //   icon: User,
-    // },
+    {
+      name: "Cart",
+      path: "/cart",
+      icon: CartIcon,
+    },
   ];
 
   return (
@@ -56,33 +44,34 @@ export default function Navbar() {
 
           <div className="hidden md:flex md:flex-1">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              {routes.map((route) => (
-                <Link
-                  key={route.path}
-                  href={route.path}
-                  className={cn(
-                    "hover:text-foreground/80 transition-colors",
-                    pathname === route.path
-                      ? "text-foreground font-semibold"
-                      : "text-foreground/60",
-                  )}
-                >
-                  {route.name}
-                </Link>
-              ))}
+              {routes.map((route) => {
+                if (route.name !== "Cart") {
+                  return (
+                    <Link
+                      key={route.path}
+                      href={route.path}
+                      className={cn(
+                        "hover:text-foreground/80 transition-colors",
+                        pathname === route.path
+                          ? "text-foreground font-semibold"
+                          : "text-foreground/60",
+                      )}
+                    >
+                      {route.name}
+                    </Link>
+                  );
+                }
+              })}
             </nav>
           </div>
 
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
-              <Button variant="ghost" size="icon" className="hidden md:flex">
-                <Heart className="h-5 w-5" />
-                <span className="sr-only">Saved Items</span>
-              </Button>
-              <Button variant="ghost" size="icon" className="hidden md:flex">
-                <ShoppingBag className="h-5 w-5" />
-                <span className="sr-only">Cart</span>
-              </Button>
+              <Link href={"/cart"} key={"/cart"}>
+                <Button variant="ghost" size="icon" className="hidden md:flex">
+                  <CartIcon />
+                </Button>
+              </Link>
 
               <Avatar className="md:flex">
                 <AvatarFallback>SC</AvatarFallback>

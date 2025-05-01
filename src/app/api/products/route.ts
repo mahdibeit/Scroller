@@ -4,7 +4,7 @@ export const fetchCache = "force-no-store";
 import { NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { Item } from "@/lib/types";
+import type { Product } from "@/lib/types";
 
 export async function GET(req: Request) {
   // Parse ?cursor=...&limit=... from URL
@@ -14,7 +14,7 @@ export async function GET(req: Request) {
 
   const filePath = path.join(process.cwd(), "public", "items-large.json");
   const fileText = await fs.readFile(filePath, "utf-8");
-  const all: Item[] = JSON.parse(fileText) as Item[];
+  const all: Product[] = JSON.parse(fileText) as Product[];
 
   // Slice page, compute nextCursor
   const start = cursor;
