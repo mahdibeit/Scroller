@@ -1,14 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/context/cart-context";
+import { useCart, type CartItem } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ArrowLeft, ShoppingBag } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { AmazonCheckoutPrompt } from "@/components/checkoutPrompt";
+
+// Build the Amazon "Add to Cart" URL for multiple items
+function buildAmazonCartUrl(items: CartItem[]) {
+  const associateTag = process.env.NEXT_PUBLIC_AMZ_ASSOCIATE_TAG;
+  const base = `https://www.amazon.ca/gp/aws/cart/add.html?AssociateTag=${associateTag}`;
+
+  const params = items
+    .map(
+      ({ asin, quantity }, idx) =>
+        `ASIN.${idx + 1}=${encodeURIComponent(asin)}&Quantity.${idx + 1}=${quantity}`,
+    )
+    .join("&");
+
+  return `${base}&${params}`;
+}
 
 export default function CartPage() {
   const {
@@ -18,19 +34,20 @@ export default function CartPage() {
     clearCart,
     subtotal,
   } = useCart();
-  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  const handleCheckout = () => {
-    setIsCheckingOut(true);
-    // In a real app, this would process the checkout
-    setTimeout(() => {
-      alert(
-        "Checkout complete! This would normally redirect to Amazon checkout.",
-      );
-      clearCart();
-      setIsCheckingOut(false);
-    }, 1500);
-  };
+  // Open Amazon in a new tab with all items pre-loaded, mark checkout as pending
+  function handleCheckout() {
+    if (!items.length) return;
+
+    const url = buildAmazonCartUrl(items);
+    sessionStorage.setItem("amazonCheckout", "pending");
+    window.open(url, "_blank", "noopener");
+  }
+
+  function handleClearCart() {
+    sessionStorage.removeItem("amazonCheckout");
+    clearCart();
+  }
 
   return (
     <>
@@ -72,7 +89,7 @@ export default function CartPage() {
                         Shopping Cart ({items.length} items)
                       </h2>
                       <button
-                        onClick={clearCart}
+                        onClick={handleClearCart}
                         className="flex items-center text-sm text-gray-500 hover:text-red-500"
                       >
                         <Trash2 className="mr-1 h-4 w-4" />
@@ -171,32 +188,16 @@ export default function CartPage() {
 
                   <Button
                     onClick={handleCheckout}
-                    disabled={isCheckingOut}
                     className="w-full bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600"
                   >
-                    {isCheckingOut ? "Processing..." : "Proceed to Checkout"}
+                    Checkout
                   </Button>
-
-                  <div className="mt-6 space-y-4">
-                    <div>
-                      <Label htmlFor="coupon">Promo Code</Label>
-                      <div className="mt-1 flex">
-                        <Input
-                          id="coupon"
-                          placeholder="Enter code"
-                          className="rounded-r-none"
-                        />
-                        <Button variant="outline" className="rounded-l-none">
-                          Apply
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           )}
         </div>
+        <AmazonCheckoutPrompt clearCart={clearCart} />
       </main>
     </>
   );
