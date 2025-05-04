@@ -59,7 +59,7 @@ export default function ProductCard({
             width={500} // base width for Next.js’s aspect‐ratio calc
             height={500} // base height for Next.js’s aspect‐ratio calc
             className="h-auto max-h-[450px] w-full object-contain"
-            sizes="(max-width: 768px) 100vw, 500px"
+            sizes="(max-width: 768px) 100vw, (max-width: 4000px) 200vw, 33vw"
             priority
           />
         </a>
