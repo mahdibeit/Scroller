@@ -1,7 +1,14 @@
 export interface Product {
+  merchandise: string;
+  country: string;
+  id: string;
   asin: string;
   title: string;
-  image: string;
   price: string;
-  link: string;
+  main_image_url: string;
+  page_url: string;
+  description: string[];
+  rating: string;
+  scraped_at: string;
+  review_count: number;
 }

@@ -1,13 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart, type CartItem } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ArrowLeft, ShoppingBag } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { AmazonCheckoutPrompt } from "@/components/checkoutPrompt";
 
@@ -100,12 +97,12 @@ export default function CartPage() {
 
                   {items.map((item) => (
                     <div
-                      key={item.asin}
+                      key={item.id}
                       className="flex flex-col gap-4 border-b p-6 sm:flex-row"
                     >
                       <div className="relative mx-auto h-24 w-24 flex-shrink-0 sm:mx-0">
                         <Image
-                          src={item.image}
+                          src={item.main_image_url}
                           alt={item.title}
                           fill
                           className="object-contain"
@@ -120,7 +117,7 @@ export default function CartPage() {
                           <div className="flex items-center">
                             <button
                               onClick={() =>
-                                updateQuantity(item.asin, item.quantity - 1)
+                                updateQuantity(item.id, item.quantity - 1)
                               }
                               className="rounded-full border p-1"
                               aria-label="Decrease quantity"
@@ -132,7 +129,7 @@ export default function CartPage() {
                             </span>
                             <button
                               onClick={() =>
-                                updateQuantity(item.asin, item.quantity + 1)
+                                updateQuantity(item.id, item.quantity + 1)
                               }
                               className="rounded-full border p-1"
                               aria-label="Increase quantity"
@@ -148,7 +145,7 @@ export default function CartPage() {
                               )}
                             </span>
                             <button
-                              onClick={() => removeItem(item.asin)}
+                              onClick={() => removeItem(item.id)}
                               className="text-gray-400 hover:text-red-500"
                               aria-label="Remove item"
                             >

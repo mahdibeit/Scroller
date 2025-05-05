@@ -12,13 +12,21 @@ export async function GET(req: Request) {
   const limit = parseInt(searchParams.get("limit") ?? "6", 10);
   const cursor = parseInt(searchParams.get("cursor") ?? "0", 10);
 
-  const filePath = path.join(process.cwd(), "public", "items-large.json");
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "combined_processed.json",
+  );
   const fileText = await fs.readFile(filePath, "utf-8");
+
   const all: Product[] = JSON.parse(fileText) as Product[];
+
+  // Shuffle the data
+  const shuffled = all.sort(() => Math.random() - 0.5);
 
   // Slice page, compute nextCursor
   const start = cursor;
-  const data = all.slice(start, start + limit);
+  const data = shuffled.slice(start, start + limit);
   const nextCursor = data.length === limit ? start + data.length : undefined;
 
   return NextResponse.json(

@@ -9,21 +9,12 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useCart } from "@/context/cart-context";
 
-export default function ProductCard({
-  asin,
-  title,
-  price,
-  image,
-  link,
-}: Product) {
+export default function ProductCard(product: Product) {
   const [liked, setLiked] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const { addItem, items } = useCart();
 
-  const isInCart = items.some((item) => item.asin === asin);
-
-  const rating = 4.7;
-  const reviewCount = 1243;
+  const isInCart = items.some((item) => item.asin === product.asin);
 
   const handleLike = () => {
     setLiked(!liked);
@@ -33,33 +24,33 @@ export default function ProductCard({
 
     // Simulate a small delay for better UX
     setTimeout(() => {
-      addItem({ asin, title, price, image, link });
+      addItem(product);
       setIsAdding(false);
 
       toast.success("Added to cart", {
-        description: title,
+        description: product.title.slice(0, 50) + "...",
         position: window.innerWidth <= 768 ? "top-center" : "bottom-right",
       });
     }, 300);
   };
 
   return (
-    <div className="mb-4 w-full snap-start overflow-hidden rounded-xl bg-white shadow-md">
+    <div className="mb-4 max-w-4xl snap-start overflow-hidden rounded-xl bg-white shadow-md">
       {/* Image */}
       <div className="w-full">
         <a
-          href={link}
+          href={product.page_url}
           target="_blank"
           rel="noopener noreferrer"
           className="block"
         >
           <Image
-            src={image}
-            alt={title}
+            src={product.main_image_url}
+            alt={product.title}
             width={500} // base width for Next.js’s aspect‐ratio calc
             height={500} // base height for Next.js’s aspect‐ratio calc
             className="h-auto max-h-[450px] w-full object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 4000px) 200vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 4000px) 300vw, 33vw"
             priority
           />
         </a>
@@ -68,22 +59,24 @@ export default function ProductCard({
       {/* price and rating         */}
       <div className="p-4">
         <h3 className="mb-1 line-clamp-2 text-sm font-medium text-black">
-          {title}
+          {product.title}
         </h3>
 
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-black">${price}</span>
-            {price && (
+            <span className="text-lg font-bold text-black">
+              ${product.price}
+            </span>
+            {/* {product.price && (
               <span className="text-sm text-gray-500 line-through">
-                ${price}
+                ${product.price}
               </span>
-            )}
+            )} */}
           </div>
-          {rating && (
+          {product.rating && (
             <div className="flex items-center text-xs text-gray-500">
               <span className="mr-1 text-yellow-500">★</span>
-              {rating} ({reviewCount})
+              {product.rating} ({product.review_count})
             </div>
           )}
         </div>

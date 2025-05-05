@@ -65,7 +65,7 @@ export default function Feed() {
     <div className="grid grid-rows-1 items-center justify-center gap-4 p-4 md:grid-cols-1">
       <div className="grid grid-cols-1 items-center justify-center gap-4 p-4">
         {allItems.map((product) => (
-          <ProductCard key={product.asin} {...product} />
+          <ProductCard key={product.id} {...product} />
         ))}
 
         {/* 8. This div is the “sentinel” that triggers more loading */}

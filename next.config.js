@@ -9,6 +9,7 @@ const config = {
     domains: [
       // allow Next.js <Image> to load from Amazon’s CDN:
       "images-na.ssl-images-amazon.com",
+      "m.media-amazon.com",
     ],
     // (optional) if you need more control, you can use remotePatterns instead:
     // remotePatterns: [

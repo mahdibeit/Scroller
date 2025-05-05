@@ -40,7 +40,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             (item) =>
               typeof item === "object" &&
               item !== null &&
-              "asin" in item &&
+              "id" in item &&
               "quantity" in item,
           )
         ) {
@@ -50,6 +50,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           console.error("Invalid cart data in localStorage");
         }
       } catch (error) {
+        clearCart();
         console.error("Failed to parse saved cart:", error);
       }
     }
@@ -62,12 +63,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = (product: Product) => {
     setItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.asin === product.asin);
+      const existingItem = prevItems.find((item) => item.id === product.id);
 
       if (existingItem) {
         // If item already exists, increase quantity
         return prevItems.map((item) =>
-          item.asin === product.asin
+          item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
@@ -78,21 +79,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const removeItem = (productAsin: string) => {
-    setItems((prevItems) =>
-      prevItems.filter((item) => item.asin !== productAsin),
-    );
+  const removeItem = (productId: string) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== productId));
   };
 
-  const updateQuantity = (productAsin: string, quantity: number) => {
+  const updateQuantity = (productId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeItem(productAsin);
+      removeItem(productId);
       return;
     }
 
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.asin === productAsin ? { ...item, quantity } : item,
+        item.id === productId ? { ...item, quantity } : item,
       ),
     );
   };
