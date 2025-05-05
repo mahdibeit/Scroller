@@ -7,6 +7,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
+import AnimatedProductScroll from "@/components/AnimatedProductScroll";
 
 export default async function Home() {
   return (
@@ -36,13 +37,8 @@ export default async function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="relative hidden h-[400px] md:block">
-                <div className="absolute top-0 right-0 h-[500px] w-[280px] translate-y-4 rotate-3 transform overflow-hidden rounded-lg bg-white shadow-xl">
-                  <div className="h-full w-full animate-pulse bg-gray-200"></div>
-                </div>
-                <div className="absolute top-0 right-20 h-[500px] w-[280px] -rotate-6 transform overflow-hidden rounded-lg bg-white shadow-xl">
-                  <div className="h-full w-full animate-pulse bg-gray-200"></div>
-                </div>
+              <div className="relative hidden h-[600px] md:block">
+                <AnimatedProductScroll />
               </div>
             </div>
           </div>
