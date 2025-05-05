@@ -7,7 +7,8 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
-import AnimatedProductScroll from "@/components/AnimatedProductScroll";
+import HeroProducts from "@/components/HeroProducts";
+import TrendingProducts from "@/components/TrendingProducts";
 
 export default async function Home() {
   return (
@@ -38,7 +39,7 @@ export default async function Home() {
                 </div>
               </div>
               <div className="relative hidden h-[600px] md:block">
-                <AnimatedProductScroll />
+                <HeroProducts />
               </div>
             </div>
           </div>
@@ -99,16 +100,8 @@ export default async function Home() {
                 <span className="font-medium">Popular items</span>
               </div>
             </div>
-            <div className="mt-8 text-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-pink-500 to-orange-500 text-white"
-              >
-                <Link href="/feed">
-                  See More Products <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="mt-8">
+              <TrendingProducts />
             </div>
           </div>
         </section>
