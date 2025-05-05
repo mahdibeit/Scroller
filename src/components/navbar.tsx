@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Heart, Home, Compass } from "lucide-react";
+import { Home, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { CartIcon } from "@/components/cart-icon";
 
 export default function Navbar() {
@@ -73,9 +72,7 @@ export default function Navbar() {
                 </Button>
               </Link>
 
-              <Avatar className="md:flex">
-                <AvatarFallback>SC</AvatarFallback>
-              </Avatar>
+              <Button variant="ghost">Sign in</Button>
             </nav>
           </div>
         </div>

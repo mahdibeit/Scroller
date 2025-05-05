@@ -27,10 +27,10 @@ export default function HeroProducts() {
 
   if (!data?.pages[0]?.data.length) return null;
 
-  const products = data.pages[0].data.slice(0, 4);
+  const products = data.pages[0].data.slice(0, 2);
 
   return (
-    <div className="relative grid min-h-[600px] w-full grid-cols-4 gap-4">
+    <div className="relative grid min-h-[600px] w-full grid-cols-3 gap-4">
       {products.map((item, index) => (
         <div
           key={item.id}
