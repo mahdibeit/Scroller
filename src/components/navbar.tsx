@@ -31,11 +31,11 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-white">
         <div className="container mx-auto flex h-14 items-center px-4">
           <div className="mr-4 flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-xl font-bold text-transparent">
+              <span className="bg-gradient-to-r from-cyan-900 to-teal-600 bg-clip-text text-xl font-bold text-transparent">
                 ScrollCart
               </span>
             </Link>
@@ -89,7 +89,7 @@ export default function Navbar() {
                 href={route.path}
                 className={cn(
                   "flex h-full flex-1 flex-col items-center justify-center",
-                  pathname === route.path ? "text-pink-500" : "text-gray-500",
+                  pathname === route.path ? "text-teal-600" : "text-gray-500",
                 )}
               >
                 <Icon className="h-5 w-5" />

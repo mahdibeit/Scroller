@@ -185,7 +185,7 @@ export default function CartPage() {
 
                   <Button
                     onClick={handleCheckout}
-                    className="w-full bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600"
+                    className="w-full bg-gradient-to-r from-cyan-900 to-teal-600 hover:from-cyan-800 hover:to-teal-400"
                   >
                     Checkout
                   </Button>

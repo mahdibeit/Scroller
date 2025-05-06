@@ -15,7 +15,7 @@ export default async function Home() {
     <>
       <main className="flex min-h-screen flex-col items-center bg-gray-50 pb-16 md:pb-0">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white">
+        <section className="w-full bg-gradient-to-r from-teal-600 to-cyan-900 text-white">
           <div className="container mx-auto px-4 py-16 md:py-24">
             <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
               <div>
@@ -30,7 +30,7 @@ export default async function Home() {
                   <Button
                     asChild
                     size="lg"
-                    className="bg-white text-pink-600 hover:bg-gray-100"
+                    className="bg-white text-cyan-950 hover:bg-gray-100"
                   >
                     <Link href="/feed">
                       Start Scrolling <ArrowRight className="ml-2 h-4 w-4" />
@@ -111,7 +111,7 @@ export default async function Home() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center justify-between md:flex-row">
               <div className="mb-4 md:mb-0">
-                <span className="bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-xl font-bold text-transparent">
+                <span className="bg-gradient-to-r from-teal-600 to-cyan-900 bg-clip-text text-xl font-bold text-transparent">
                   ScrollCart
                 </span>
                 <p className="mt-1 text-sm text-gray-500">

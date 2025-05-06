@@ -89,7 +89,7 @@ export default function ProductCard(product: Product) {
             className={cn(
               isInCart
                 ? "bg-green-500 hover:bg-green-600"
-                : "bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600",
+                : "bg-gradient-to-r from-cyan-900 to-teal-600 hover:from-cyan-800 hover:to-teal-400",
               "text-white",
             )}
           >
