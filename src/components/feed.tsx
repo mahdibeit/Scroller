@@ -42,7 +42,6 @@ export default function Feed() {
   const { ref, inView } = useInView({ rootMargin: "200px", threshold: 0 });
 
   // When that sentinel scrolls into view, load the next page
-
   useEffect(() => {
     console.log("sentinel inView?", inView, "hasNextPage?", hasNextPage);
     if (inView && hasNextPage) {
@@ -52,13 +51,6 @@ export default function Feed() {
 
   // Save scroll position when scrolling
   const STORAGE_KEY = "feed-scroll-position";
-  useEffect(() => {
-    // Scroll to top on initial load/refresh
-    window.scrollTo(0, 0);
-    // Clear any saved scroll position from previous session
-    sessionStorage.removeItem(STORAGE_KEY);
-  }, []); // Empty dependency array means this runs once on mount
-
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
