@@ -6,10 +6,10 @@
 - [x] Fix the width of product cart in the large screen
 - [x] Add more products
 - [x] Fix first page image
-- [] Figure out the recommendation
-- [] Fix the color theme
-- [] Add login and save feature
-- [] Figure out the refresh situation
-- [] Get domain
+- [x] Fix the color theme
+- [x] Figure out the refresh situation
 - [x] Fix avatar in login
+- [] Figure out the recommendation
+- [] Add login and save feature
+- [] Get domain
 - [] add share cart feature
