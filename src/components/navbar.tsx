@@ -49,6 +49,7 @@ export default function Navbar() {
                     <Link
                       key={route.path}
                       href={route.path}
+                      scroll={false}
                       className={cn(
                         "hover:text-foreground/80 transition-colors",
                         pathname === route.path
@@ -66,7 +67,7 @@ export default function Navbar() {
 
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
-              <Link href={"/cart"} key={"/cart"}>
+              <Link href={"/cart"} key={"/cart"} scroll={false}>
                 <Button variant="ghost" size="icon" className="hidden md:flex">
                   <CartIcon />
                 </Button>
@@ -87,6 +88,7 @@ export default function Navbar() {
               <Link
                 key={route.path}
                 href={route.path}
+                scroll={false}
                 className={cn(
                   "flex h-full flex-1 flex-col items-center justify-center",
                   pathname === route.path ? "text-pink-500" : "text-gray-500",

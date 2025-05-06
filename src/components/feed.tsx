@@ -34,6 +34,9 @@ export default function Feed() {
     queryFn: fetchItems,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,
+    staleTime: 1000 * 60 * 5,
+    refetchOnMount: false, // Don't refetch on component mount
+    refetchOnReconnect: false, // Don't refetch when reconnecting
   });
 
   const { ref, inView } = useInView({ rootMargin: "200px", threshold: 0 });
@@ -47,6 +50,41 @@ export default function Feed() {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
+  // Save scroll position when scrolling
+  const STORAGE_KEY = "feed-scroll-position";
+  useEffect(() => {
+    // Scroll to top on initial load/refresh
+    window.scrollTo(0, 0);
+    // Clear any saved scroll position from previous session
+    sessionStorage.removeItem(STORAGE_KEY);
+  }, []); // Empty dependency array means this runs once on mount
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      sessionStorage.setItem(STORAGE_KEY, position.toString());
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Restore scroll position after data loads
+  useEffect(() => {
+    if (data) {
+      // Only restore after data is available
+      const saved = sessionStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        // Use setTimeout to ensure DOM has updated
+        setTimeout(() => {
+          window.scrollTo(0, parseInt(saved, 10));
+        }, 0);
+      }
+    }
+  }, [data]);
+
   if (isLoading) {
     return <p>Loading items…</p>;
   }
@@ -57,8 +95,12 @@ export default function Feed() {
     return null;
   }
 
-  // Flatten and render
-  const allItems = data.pages.flatMap((page) => page.data);
+  // Flatten and remove duplicates
+  const allItems = Array.from(
+    new Map(
+      data.pages.flatMap((page) => page.data).map((item) => [item.id, item]),
+    ).values(),
+  );
 
   return (
     <div className="grid grid-rows-1 items-center justify-center gap-4 p-4 md:grid-cols-1">
