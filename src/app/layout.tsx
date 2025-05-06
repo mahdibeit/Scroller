@@ -9,7 +9,7 @@ import { CartProvider } from "@/context/cart-context";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "ScrollCart - Scroll. Shop. Smile.",
+  title: "ScrollCart - Scroll. Discover. Shop.",
   description: "AI-curated Amazon shopping feed with one-tap checkout",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
