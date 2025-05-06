@@ -1,6 +1,3 @@
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
-
 import { NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -33,9 +30,6 @@ export async function GET(req: Request) {
     { data, nextCursor },
     {
       status: 200,
-      headers: {
-        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
-      },
     },
   );
 }

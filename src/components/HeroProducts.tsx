@@ -8,9 +8,7 @@ async function fetchItems({ pageParam = 0 }): Promise<{
   data: Product[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/products?cursor=${pageParam}&limit=4`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`/api/products?cursor=${pageParam}&limit=4`, {});
   if (!res.ok) {
     throw new Error("Failed to load items");
   }
@@ -21,6 +19,7 @@ export default function HeroProducts() {
   const { data } = useInfiniteQuery({
     queryKey: ["HeroProducts"],
     queryFn: fetchItems,
+    refetchOnWindowFocus: false,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,
   });

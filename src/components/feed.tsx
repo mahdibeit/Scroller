@@ -11,9 +11,7 @@ async function fetchItems({ pageParam = 0 }): Promise<{
   data: Product[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/products?cursor=${pageParam}&limit=6`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`/api/products?cursor=${pageParam}&limit=6`, {});
   if (!res.ok) {
     throw new Error("Failed to load items");
   }
@@ -32,6 +30,7 @@ export default function Feed() {
     isFetchingNextPage,
   } = useInfiniteQuery({
     queryKey: ["Products"],
+    refetchOnWindowFocus: false,
     queryFn: fetchItems,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,

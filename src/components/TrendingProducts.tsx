@@ -22,6 +22,7 @@ export default function TrendingProducts() {
     queryKey: ["TrendingProducts"],
     queryFn: fetchItems,
     getNextPageParam: (last) => last.nextCursor,
+    refetchOnWindowFocus: false,
     initialPageParam: 0,
   });
 
