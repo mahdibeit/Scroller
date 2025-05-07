@@ -23,7 +23,8 @@ async function fetchItems({ pageParam = 0 }): Promise<{
 
 export default function ExploreGrid() {
   const [liked, setLiked] = useState<Record<string, boolean>>({});
-  const { addItem, items } = useCart();
+  const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const { addItem } = useCart();
 
   const { data } = useInfiniteQuery({
     queryKey: ["ExploreProducts"],
@@ -72,6 +73,7 @@ export default function ExploreGrid() {
     <div className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-4">
       {products.map((product, index) => {
         const gridSpanClass = getGridSpan(index);
+        const isActive = activeProduct === product.id;
 
         return (
           <div
@@ -80,12 +82,22 @@ export default function ExploreGrid() {
               "group bg-card relative overflow-hidden rounded-md border-4",
               gridSpanClass,
             )}
+            onClick={() => setActiveProduct(isActive ? null : product.id)}
           >
             <a
               href={addAssociateTag(product.page_url)}
               target="_blank"
               rel="noopener noreferrer"
               className="relative block aspect-square h-full w-full"
+              onClick={(e) => {
+                // Prevent link navigation on first click on mobile
+                if (
+                  window.matchMedia("(max-width: 768px)").matches &&
+                  !isActive
+                ) {
+                  e.preventDefault();
+                }
+              }}
             >
               <Image
                 src={product.main_image_url}
@@ -99,8 +111,14 @@ export default function ExploreGrid() {
                 }
               />
 
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 flex flex-col justify-between bg-black/40 p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {/* Overlay on hover/click */}
+              <div
+                className={cn(
+                  "absolute inset-0 flex flex-col justify-between bg-black/40 p-3 transition-opacity duration-300",
+                  "md:opacity-0 md:group-hover:opacity-100", // Only use hover effect on desktop
+                  isActive ? "opacity-100" : "opacity-0", // Show on mobile when active
+                )}
+              >
                 <div className="flex justify-end">
                   <button
                     onClick={(e) => {
