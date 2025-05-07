@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Compass } from "lucide-react";
+import { Home, Compass, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CartIcon } from "@/components/cart-icon";
@@ -20,6 +20,11 @@ export default function Navbar() {
       name: "Feed",
       path: "/feed",
       icon: Compass,
+    },
+    {
+      name: "Explore",
+      path: "/explore",
+      icon: Search,
     },
     {
       name: "Cart",
