@@ -13,3 +13,7 @@
 - [] Add login and save feature
 - [] Get domain
 - [] add share cart feature
+- [x] fix associate tag for url of images
+- [] add explore page
+- [] add more column options for views of feed
+- [] add filtering option

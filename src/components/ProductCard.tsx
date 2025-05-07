@@ -9,6 +9,13 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useCart } from "@/context/cart-context";
 
+export function addAssociateTag(originalUrl: string): string {
+  const associateTag = process.env.NEXT_PUBLIC_AMZ_ASSOCIATE_TAG!;
+  const url = new URL(originalUrl);
+  url.searchParams.set("tag", associateTag);
+  return url.toString();
+}
+
 export default function ProductCard(product: Product) {
   const [liked, setLiked] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
@@ -39,7 +46,7 @@ export default function ProductCard(product: Product) {
       {/* Image */}
       <div className="w-full">
         <a
-          href={product.page_url}
+          href={addAssociateTag(product.page_url)}
           target="_blank"
           rel="noopener noreferrer"
           className="block"
