@@ -1,0 +1,26 @@
+import { Suspense } from "react";
+import ExploreGrid from "@/components/exploreGrid";
+import ExploreCategories from "@/components/exploreCategories";
+import { Loader2 } from "lucide-react";
+
+export default function ExplorePage() {
+  return (
+    <>
+      <main className="flex min-h-screen flex-col items-center pb-16 md:pb-0">
+        <div className="mx-auto w-full max-w-7xl px-4 py-6">
+          <ExploreCategories />
+
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center py-20">
+                <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
+              </div>
+            }
+          >
+            <ExploreGrid />
+          </Suspense>
+        </div>
+      </main>
+    </>
+  );
+}
