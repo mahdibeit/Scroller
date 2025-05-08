@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Heart, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,6 +9,7 @@ import type { Product } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { addAssociateTag } from "./ProductCard";
+import { useInView } from "react-intersection-observer";
 
 async function fetchItems({ pageParam = 0 }): Promise<{
   data: Product[];
@@ -26,17 +27,52 @@ export default function ExploreGrid() {
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const { addItem } = useCart();
 
-  const { data } = useInfiniteQuery({
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ["ExploreProducts"],
     queryFn: fetchItems,
     refetchOnWindowFocus: false,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,
+    staleTime: 1000 * 60 * 5,
+    refetchOnMount: false, // Don't refetch on component mount
+    refetchOnReconnect: false, // Don't refetch when reconnecting
   });
 
-  if (!data?.pages[0]?.data.length) return null;
+  const { ref, inView } = useInView({ rootMargin: "200px", threshold: 0 });
 
-  const products = data.pages[0].data;
+  // When that sentinel scrolls into view, load the next page
+  useEffect(() => {
+    console.log("sentinel inView?", inView, "hasNextPage?", hasNextPage);
+    if (inView && hasNextPage) {
+      void fetchNextPage(); // void to explicitly ignore the returned promise
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
+  if (isLoading) {
+    return <p>Loading items…</p>;
+  }
+  if (isError) {
+    return <p className="text-red-500">Error: {error.message}</p>;
+  }
+  if (!data) {
+    return null;
+  }
+  // Flatten and remove duplicates
+  const allItems = Array.from(
+    new Map(
+      data.pages.flatMap((page) => page.data).map((item) => [item.id, item]),
+    ).values(),
+  );
+
+  const products = allItems;
 
   const handleLike = (productId: string) => {
     setLiked((prev) => ({
@@ -182,6 +218,14 @@ export default function ExploreGrid() {
           </div>
         );
       })}
+      {/* 8. This div is the “sentinel” that triggers more loading */}
+      <div ref={ref} className="col-span-full py-4 text-center">
+        {isFetchingNextPage
+          ? "Loading more…"
+          : hasNextPage
+            ? "Scroll to load more"
+            : "— End of feed —"}
+      </div>
     </div>
   );
 }
