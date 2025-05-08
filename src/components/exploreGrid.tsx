@@ -91,15 +91,12 @@ export default function ExploreGrid() {
 
   // Function to determine grid span classes for variety
   const getGridSpan = (index: number) => {
-    // Create a pattern for different sized grid items
+    // Create a pattern that works with a 4-column grid
+    // Make items at position 0 and 7 large (2x2)
     const pattern = index % 12;
 
     if (pattern === 0 || pattern === 7) {
       return "md:col-span-2 md:row-span-2"; // Large item
-    } else if (pattern === 4) {
-      return "md:col-span-2 md:row-span-1"; // Wide item
-    } else if (pattern === 9) {
-      return "md:col-span-1 md:row-span-2"; // Tall item
     }
 
     return "md:col-span-1 md:row-span-1"; // Standard item
