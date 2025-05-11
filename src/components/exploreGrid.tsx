@@ -27,6 +27,11 @@ export default function ExploreGrid() {
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const { addItem } = useCart();
 
+  // Add useEffect to scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     data,
     isLoading,

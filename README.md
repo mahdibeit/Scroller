@@ -15,7 +15,7 @@
 - [] Fix empty spaces in explore
 - [] Add influencer recommendation
 - [] Figure out the recommendation
-- [] add more column options for views of feed
+- [x] add more column options for views of feed
 - [] add filtering option
 - [] Add categorize to the explore
 - [] Add login and save feature
