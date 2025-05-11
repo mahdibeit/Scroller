@@ -3,10 +3,7 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import InfluencerProducts from "@/components/InfluencerProducts";
-import {
-  influencersByCategory,
-  categoryNames,
-} from "../category/[categoryId]/page";
+import { categoryNames, influencersByCategory } from "@/lib/constants";
 
 // Find influencer in any category
 function findInfluencer(id: string) {
@@ -22,12 +19,15 @@ function findInfluencer(id: string) {
   return null;
 }
 
-export default function InfluencerPage({
+export default async function InfluencerPage({
   params,
 }: {
-  params: { influencerId: string };
+  // ← now a Promise
+  params: Promise<{ influencerId: string }>;
 }) {
-  const { influencerId } = params;
+  // await it to get the actual object
+  const { influencerId } = await params;
+
   const influencer = findInfluencer(influencerId);
 
   if (!influencer) {

@@ -10,10 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import {
-  influencersByCategory,
-  categoryNames,
-} from "./category/[categoryId]/page";
+import { categoryNames, influencersByCategory } from "@/lib/constants";
 
 // Categories with descriptions
 const categories = Object.entries(categoryNames).map(([id, name]) => ({
