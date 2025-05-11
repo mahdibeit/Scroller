@@ -18,7 +18,7 @@ export default function ExploreCategories() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   return (
-    <div className="scrollbar-hide mb-6 overflow-x-auto">
+    <div className="scrollbar-hide flex-1 overflow-x-auto">
       <div className="flex space-x-2 pb-2">
         {categories.map((category) => (
           <button

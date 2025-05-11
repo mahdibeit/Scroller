@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import ExploreGrid from "@/components/exploreGrid";
 import ExploreCategories from "@/components/exploreCategories";
+import SearchProducts from "@/components/SearchProducts";
 import { Loader2 } from "lucide-react";
 
 export default function ExplorePage() {
@@ -8,7 +9,10 @@ export default function ExplorePage() {
     <>
       <main className="flex min-h-screen flex-col items-center pb-16 md:pb-0">
         <div className="mx-auto w-full max-w-7xl px-4 py-6">
-          <ExploreCategories />
+          <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between md:gap-4">
+            <ExploreCategories />
+            <SearchProducts />
+          </div>
 
           <Suspense
             fallback={
