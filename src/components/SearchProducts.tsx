@@ -10,7 +10,7 @@ export default function SearchProducts() {
 
   return (
     <div>
-      <div className="relative">
+      <div className="relative py-2">
         <SearchIcon className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
           type="search"

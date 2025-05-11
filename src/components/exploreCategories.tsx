@@ -23,7 +23,7 @@ export default function ExploreCategories() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   return (
-    <div className="flex-1">
+    <div className="md:max-w-[70%]">
       <div className="scrollbar-hide relative flex overflow-x-auto">
         <div className="flex space-x-2 py-2">
           {categories.map((category) => (
