@@ -98,7 +98,7 @@ export default function CategoryPage({
   return (
     <div className="container mx-auto px-4 py-8">
       <Link
-        href="/"
+        href="/influencer-picks"
         className="text-primary mb-6 inline-flex items-center text-sm font-medium"
       >
         <ChevronLeft className="mr-1 h-4 w-4" />
@@ -117,7 +117,10 @@ export default function CategoryPage({
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {influencers.map((influencer) => (
-          <Link key={influencer.id} href={`/influencer/${influencer.id}`}>
+          <Link
+            key={influencer.id}
+            href={`/influencer-picks/influencer/${influencer.id}`}
+          >
             <Card className="h-full transition-all hover:shadow-md">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">

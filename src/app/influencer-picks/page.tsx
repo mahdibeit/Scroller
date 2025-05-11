@@ -91,7 +91,7 @@ export default function Home() {
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/category/${category.id}`}
+              href={`influencer-picks/category/${category.id}`}
               className="block"
             >
               <Card className="h-full transition-all hover:shadow-md">
@@ -112,18 +112,13 @@ export default function Home() {
       </section>
 
       <section className="mt-12">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Featured Influencers</h2>
-          <Link
-            href="/influencers"
-            className="text-primary text-sm font-medium"
-          >
-            View all
-          </Link>
-        </div>
+        <h2 className="mb-6 text-2xl font-semibold">Featured Influencers</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featuredInfluencers.map((influencer) => (
-            <Link key={influencer.id} href={`/influencer/${influencer.id}`}>
+            <Link
+              key={influencer.id}
+              href={`influencer-picks/influencer/${influencer.id}`}
+            >
               <Card className="h-full transition-all hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-col items-center text-center">

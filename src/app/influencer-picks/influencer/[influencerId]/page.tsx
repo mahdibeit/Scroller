@@ -42,7 +42,7 @@ export default function InfluencerPage({
           The influencer you&apos;re looking for doesn&apos;t exist or
           hasn&apos;t been added yet.
         </p>
-        <Link href="/" className="text-primary font-medium">
+        <Link href="/influencer-picks" className="text-primary font-medium">
           Return to Home
         </Link>
       </div>
@@ -52,7 +52,7 @@ export default function InfluencerPage({
   return (
     <div className="container mx-auto px-4 py-8">
       <Link
-        href={`/category/${influencer.category.toLowerCase()}`}
+        href={`/influencer-picks/category/${influencer.category.toLowerCase()}`}
         className="text-primary mb-6 inline-flex items-center text-sm font-medium"
       >
         <ChevronLeft className="mr-1 h-4 w-4" />

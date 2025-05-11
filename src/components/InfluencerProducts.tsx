@@ -57,32 +57,6 @@ export default function InfluencerProducts({
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  // Save scroll position when scrolling
-  const STORAGE_KEY = `influencer-${influencerId}-scroll-position`;
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      sessionStorage.setItem(STORAGE_KEY, position.toString());
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [STORAGE_KEY]);
-
-  // Restore scroll position after data loads
-  useEffect(() => {
-    if (data) {
-      const saved = sessionStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        setTimeout(() => {
-          window.scrollTo(0, parseInt(saved, 10));
-        }, 0);
-      }
-    }
-  }, [data, STORAGE_KEY]);
-
   if (isLoading) {
     return <div>Loading products...</div>;
   }
@@ -106,7 +80,7 @@ export default function InfluencerProducts({
     <>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {allItems.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} {...product} layout="influencer" />
         ))}
       </div>
 

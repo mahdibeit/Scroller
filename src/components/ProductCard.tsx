@@ -16,7 +16,10 @@ export function addAssociateTag(originalUrl: string): string {
   return url.toString();
 }
 
-export default function ProductCard(product: Product) {
+export default function ProductCard(
+  props: Product & { layout?: "influencer" },
+) {
+  const { layout, ...product } = props;
   const [liked, setLiked] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const { addItem, items } = useCart();
@@ -42,30 +45,54 @@ export default function ProductCard(product: Product) {
   };
 
   return (
-    <div className="mb-4 max-w-4xl snap-start overflow-hidden rounded-xl bg-white shadow-md">
+    <div
+      className={cn(
+        "mb-4 max-w-4xl snap-start overflow-hidden rounded-xl bg-white shadow-md",
+        layout === "influencer" && "flex h-[500px] flex-col",
+      )}
+    >
       {/* Image */}
-      <div className="w-full">
+      <div
+        className={cn(
+          "w-full",
+          layout === "influencer" && "relative h-[300px]",
+        )}
+      >
         <a
           href={addAssociateTag(product.page_url)}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
+          className={cn("block", layout === "influencer" && "h-full")}
         >
           <Image
             src={product.main_image_url}
             alt={product.title}
-            width={500} // base width for Next.js’s aspect‐ratio calc
-            height={500} // base height for Next.js’s aspect‐ratio calc
-            className="h-auto max-h-[450px] w-full object-contain"
-            sizes="(max-width: 768px) 100vw, (max-width: 4000px) 300vw, 33vw"
+            {...(layout === "influencer"
+              ? { fill: true, className: "object-contain p-2" }
+              : {
+                  width: 500,
+                  height: 500,
+                  className: "h-auto max-h-[450px] w-full object-contain",
+                })}
+            sizes="(max-width: 768px) 100vw, (max-width: 4000px) 300px, 33vw"
             priority
           />
         </a>
       </div>
 
-      {/* price and rating         */}
-      <div className="p-4">
-        <h3 className="mb-1 line-clamp-2 text-sm font-medium text-black">
+      {/* price and rating */}
+      <div
+        className={cn(
+          "p-4",
+          layout === "influencer" && "flex h-[200px] flex-col",
+        )}
+      >
+        <h3
+          className={cn(
+            "mb-1 line-clamp-2 text-sm font-medium text-black",
+            layout === "influencer" && "h-[40px]",
+          )}
+        >
           {product.title}
         </h3>
 
@@ -74,11 +101,6 @@ export default function ProductCard(product: Product) {
             <span className="text-lg font-bold text-black">
               ${product.price}
             </span>
-            {/* {product.price && (
-              <span className="text-sm text-gray-500 line-through">
-                ${product.price}
-              </span>
-            )} */}
           </div>
           {product.rating && (
             <div className="flex items-center text-xs text-gray-500">
@@ -89,7 +111,12 @@ export default function ProductCard(product: Product) {
         </div>
 
         {/* Add to Cart Button */}
-        <div className="flex items-center justify-between">
+        <div
+          className={cn(
+            "flex items-center justify-between",
+            layout === "influencer" && "mt-2",
+          )}
+        >
           <Button
             onClick={handleAddToCart}
             disabled={isAdding}
@@ -115,7 +142,7 @@ export default function ProductCard(product: Product) {
             )}
           </Button>
 
-          {/* Like          */}
+          {/* Like */}
           <div className="flex gap-2">
             <button
               onClick={handleLike}
