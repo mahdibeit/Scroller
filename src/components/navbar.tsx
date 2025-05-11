@@ -77,7 +77,9 @@ export default function Navbar() {
                 </Button>
               </Link>
 
-              <Button variant="ghost">Sign in</Button>
+              <Button variant="ghost" hidden={true}>
+                Sign in
+              </Button>
             </nav>
           </div>
         </div>

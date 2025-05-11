@@ -5,13 +5,18 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   { id: "all", name: "All" },
-  { id: "electronics", name: "Electronics" },
-  { id: "home", name: "Home & Kitchen" },
-  { id: "fashion", name: "Fashion" },
-  { id: "beauty", name: "Beauty" },
-  { id: "sports", name: "Sports" },
-  { id: "toys", name: "Toys" },
-  { id: "books", name: "Books" },
+  { id: "under-100", name: "Under $100" },
+  { id: "healthy-snacks", name: "Healthy Snacks" },
+  { id: "daily-deals", name: "Daily Deals" },
+  { id: "staff-picks", name: "Staff Picks" },
+  { id: "under-50", name: "Under $50" },
+  { id: "quirky-finds", name: "Unique & Quirky" },
+  { id: "trending-now", name: "Trending Now" },
+  { id: "life-hacks", name: "Life Hacks" },
+  { id: "gift-ideas", name: "Gift Ideas" },
+  { id: "office-essentials", name: "Home & Office Essentials" },
+  { id: "outdoor-adventures", name: "Outdoor Adventures" },
+  { id: "travel-essentials", name: "Travel Essentials" },
 ];
 
 export default function ExploreCategories() {

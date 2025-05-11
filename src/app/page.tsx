@@ -115,7 +115,7 @@ export default async function Home() {
                   ScrollCart
                 </span>
                 <p className="mt-1 text-sm text-gray-500">
-                  Scroll. Shop. Smile.
+                  Scroll. Discover. Shop.
                 </p>
               </div>
               <div className="flex flex-col gap-4 text-sm md:flex-row md:gap-8">
@@ -149,10 +149,7 @@ export default async function Home() {
               <p>
                 © {new Date().getFullYear()} ScrollCart. All rights reserved.
               </p>
-              <p className="mt-1">
-                Not affiliated with Amazon. Amazon and all related logos are
-                trademarks of Amazon.com, Inc.
-              </p>
+              <p className="mt-1">Not affiliated with Amazon.</p>
             </div>
           </div>
         </footer>
