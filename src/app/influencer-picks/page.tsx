@@ -10,67 +10,56 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// Mock data for categories
-const categories = [
-  {
-    id: "tech",
-    name: "Tech",
-    description: "Technology gadgets and accessories",
-    influencerCount: 12,
+import {
+  influencersByCategory,
+  categoryNames,
+} from "./category/[categoryId]/page";
+
+// Categories with descriptions
+const categories = Object.entries(categoryNames).map(([id, name]) => ({
+  id,
+  name,
+  description: getDescription(id),
+  get influencerCount() {
+    return influencersByCategory[id]?.length ?? 0;
   },
-  {
-    id: "fitness",
-    name: "Fitness",
-    description: "Workout equipment and supplements",
-    influencerCount: 8,
-  },
-  {
-    id: "beauty",
-    name: "Beauty",
-    description: "Skincare, makeup, and beauty products",
-    influencerCount: 15,
-  },
-  {
-    id: "home",
-    name: "Home",
-    description: "Home decor and kitchen essentials",
-    influencerCount: 10,
-  },
-  {
-    id: "fashion",
-    name: "Fashion",
-    description: "Clothing, shoes, and accessories",
-    influencerCount: 14,
-  },
+}));
+
+// Define featured influencer IDs
+const FEATURED_INFLUENCER_IDS = [
+  "mkbhd", // Popular tech reviewer
+  "linustechtips", // Large tech channel
+  "ijustine", // Tech lifestyle
+  "athleanx", // Popular fitness channel
 ];
 
-// Featured influencers configuration
-const featuredInfluencers = [
-  {
-    id: "linustechtips",
-    name: "Linus Tech Tips",
-    category: "Tech",
-    imageUrl: "/placeholder.svg?height=96&width=96",
-  },
-  {
-    id: "ijustine",
-    name: "iJustine",
-    category: "Tech",
-    imageUrl: "/placeholder.svg?height=96&width=96",
-  },
-  {
-    id: "mkbhd",
-    name: "MKBHD",
-    category: "Tech",
-    imageUrl: "/placeholder.svg?height=96&width=96",
-  },
-  {
-    id: "fitnesswithpamela",
-    name: "Fitness with Pamela",
-    category: "Fitness",
-    imageUrl: "/placeholder.svg?height=96&width=96",
-  },
-];
+// Get featured influencers by ID
+const featuredInfluencers = Object.entries(influencersByCategory).flatMap(
+  ([category, influencers]) =>
+    influencers
+      .filter((inf) => FEATURED_INFLUENCER_IDS.includes(inf.id))
+      .map((inf) => ({
+        ...inf,
+        category: categoryNames[category as keyof typeof categoryNames],
+      })),
+);
+
+function getDescription(category: string): string {
+  switch (category) {
+    case "tech":
+      return "Technology gadgets and accessories";
+    case "fitness":
+      return "Workout equipment and supplements";
+    case "beauty":
+      return "Skincare, makeup, and beauty products";
+    case "home":
+      return "Home decor and kitchen essentials";
+    case "fashion":
+      return "Clothing, shoes, and accessories";
+    default:
+      return "";
+  }
+}
 
 export default function Home() {
   return (

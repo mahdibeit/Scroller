@@ -3,28 +3,24 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import InfluencerProducts from "@/components/InfluencerProducts";
+import {
+  influencersByCategory,
+  categoryNames,
+} from "../../category/[categoryId]/page";
 
-// Mock data for influencers profile info only
-const influencers = {
-  linustechtips: {
-    name: "Linus Tech Tips",
-    category: "Tech",
-    followers: "13.8M",
-    bio: "Tech reviews, guides, and unboxings from the LTT team",
-  },
-  ijustine: {
-    name: "iJustine",
-    category: "Tech",
-    followers: "7.2M",
-    bio: "Tech enthusiast covering Apple products, gadgets, and gaming",
-  },
-  fitnesswithpamela: {
-    name: "Fitness with Pamela",
-    category: "Fitness",
-    followers: "2.4M",
-    bio: "Home workouts, fitness tips, and healthy lifestyle recommendations",
-  },
-};
+// Find influencer in any category
+function findInfluencer(id: string) {
+  for (const [category, influencers] of Object.entries(influencersByCategory)) {
+    const influencer = influencers.find((inf) => inf.id === id);
+    if (influencer) {
+      return {
+        ...influencer,
+        category: categoryNames[category as keyof typeof categoryNames],
+      };
+    }
+  }
+  return null;
+}
 
 export default function InfluencerPage({
   params,
@@ -32,7 +28,7 @@ export default function InfluencerPage({
   params: { influencerId: string };
 }) {
   const { influencerId } = params;
-  const influencer = influencers[influencerId as keyof typeof influencers];
+  const influencer = findInfluencer(influencerId);
 
   if (!influencer) {
     return (
@@ -52,7 +48,7 @@ export default function InfluencerPage({
   return (
     <div className="container mx-auto px-4 py-8">
       <Link
-        href={`/influencer-picks/category/${influencer.category.toLowerCase()}`}
+        href={`/influencer-picks/category/${Object.entries(categoryNames).find(([_, value]) => value === influencer.category)?.[0]}`}
         className="text-primary mb-6 inline-flex items-center text-sm font-medium"
       >
         <ChevronLeft className="mr-1 h-4 w-4" />
@@ -63,7 +59,7 @@ export default function InfluencerPage({
         <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
           <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
             <Image
-              src="/placeholder.svg?height=128&width=128"
+              src={influencer.imageUrl}
               width={128}
               height={128}
               alt={influencer.name}
@@ -82,7 +78,10 @@ export default function InfluencerPage({
             <p className="text-muted-foreground mb-2">
               {influencer.followers} followers
             </p>
-            <p className="max-w-2xl">{influencer.bio}</p>
+            <p className="max-w-2xl">
+              {influencer.bio ??
+                `${influencer.name} shares their favorite products and recommendations`}
+            </p>
           </div>
         </div>
       </header>
