@@ -6,7 +6,7 @@ import InfluencerProducts from "@/components/InfluencerProducts";
 import {
   influencersByCategory,
   categoryNames,
-} from "../../category/[categoryId]/page";
+} from "../category/[categoryId]/page";
 
 // Find influencer in any category
 function findInfluencer(id: string) {

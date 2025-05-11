@@ -106,7 +106,7 @@ export default function Home() {
           {featuredInfluencers.map((influencer) => (
             <Link
               key={influencer.id}
-              href={`influencer-picks/influencer/${influencer.id}`}
+              href={`influencer-picks/${influencer.id}`}
             >
               <Card className="h-full transition-all hover:shadow-md">
                 <CardContent className="pt-6">
