@@ -9,7 +9,7 @@ export default function SearchProducts() {
   const [query, setQuery] = useState("");
 
   return (
-    <div className="mb-6">
+    <div>
       <div className="relative">
         <SearchIcon className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input

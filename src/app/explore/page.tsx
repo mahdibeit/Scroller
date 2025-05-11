@@ -9,7 +9,7 @@ export default function ExplorePage() {
     <>
       <main className="flex min-h-screen flex-col items-center pb-16 md:pb-0">
         <div className="mx-auto w-full max-w-7xl px-4 py-6">
-          <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="mb-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between md:gap-4">
             <ExploreCategories />
             <SearchProducts />
           </div>

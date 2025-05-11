@@ -18,22 +18,24 @@ export default function ExploreCategories() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   return (
-    <div className="scrollbar-hide flex-1 overflow-x-auto">
-      <div className="flex space-x-2 pb-2">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setActiveCategory(category.id)}
-            className={cn(
-              "rounded-full px-4 py-2 text-sm whitespace-nowrap transition-colors",
-              activeCategory === category.id
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-            )}
-          >
-            {category.name}
-          </button>
-        ))}
+    <div className="flex-1">
+      <div className="scrollbar-hide relative flex overflow-x-auto">
+        <div className="flex space-x-2 py-2">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={cn(
+                "rounded-full px-4 py-2 text-sm whitespace-nowrap transition-colors",
+                activeCategory === category.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+              )}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
