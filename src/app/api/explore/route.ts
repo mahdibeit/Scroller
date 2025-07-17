@@ -29,17 +29,20 @@ export async function GET(req: Request) {
     const searchParts = search.split("-").map((s) => s.trim().toLowerCase());
 
     if (searchParts.some((part) => getIfDigit(part))) {
+      // Filter if numbers are present
       const digits = searchParts.map(getIfDigit).filter(Boolean) as string[];
       all = all.filter(
         (item) => parseInt(item.price) < parseInt(digits.join(" "), 10),
       );
     } else {
+      // Filter items where description is an array and contains all search parts
       all = all.filter(
         (item) =>
-          Array.isArray(item.description) &&
-          searchParts.every((part) =>
-            item.description.join(" ").toLowerCase().includes(part),
-          ),
+          (Array.isArray(item.description) &&
+            searchParts.every((part) =>
+              item.description.join(" ").toLowerCase().includes(part),
+            )) ||
+          searchParts.every((part) => item.title.toLowerCase().includes(part)),
       );
     }
   }

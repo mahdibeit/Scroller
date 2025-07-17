@@ -131,7 +131,13 @@ export default function ExploreGrid({
 
     return "md:col-span-1 md:row-span-1"; // Standard item
   };
-
+  if (products.length === 0) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <p className="text-muted-foreground">No items found</p>
+      </div>
+    );
+  }
   return (
     <div className="grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-2 lg:grid-cols-4">
       {products.map((product, index) => {
@@ -221,10 +227,10 @@ export default function ExploreGrid({
                         e.stopPropagation();
                         handleAddToCart(product);
                       }}
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full p-2"
+                      className="bg-primary/70 text-primary-foreground hover:bg-primary/80 p-2"
                       aria-label="Add to cart"
                     >
-                      <ShoppingCart className="h-4 w-4" />
+                      <ShoppingCart className="h-6 w-6" />
                     </button>
                   </div>
                 </div>
@@ -232,7 +238,7 @@ export default function ExploreGrid({
             </a>
 
             {/* Discount badge */}
-            {product.price && (
+            {/* {product.price && (
               <div className="bg-primary text-primary-foreground absolute top-2 left-2 rounded-md px-2 py-1 text-xs font-bold">
                 {Math.round(
                   ((parseFloat(product.price) - parseFloat(product.price)) /
@@ -241,7 +247,7 @@ export default function ExploreGrid({
                 )}
                 % OFF
               </div>
-            )}
+            )} */}
           </div>
         );
       })}
@@ -251,7 +257,7 @@ export default function ExploreGrid({
           ? "Loading more…"
           : hasNextPage
             ? "Scroll to load more"
-            : "— End of feed —"}
+            : ""}
       </div>
     </div>
   );
