@@ -105,7 +105,9 @@ export default function Navbar() {
                 )}
               >
                 <Icon className="h-5 w-5" />
-                <span className="mt-1 text-xs">{route.name}</span>
+                <span className="mt-1 truncate text-center text-xs">
+                  {route.name}
+                </span>
               </Link>
             );
           })}
