@@ -1,16 +1,23 @@
-import { Suspense } from "react";
+"use client";
+
+import { Suspense, useState } from "react";
 import ExploreGrid from "@/components/exploreGrid";
 import ExploreCategories from "@/components/exploreCategories";
 import SearchProducts from "@/components/SearchProducts";
 import { Loader2 } from "lucide-react";
 
 export default function ExplorePage() {
+  const [activeCategory, setActiveCategory] = useState("all");
+
   return (
     <>
       <main className="flex min-h-screen flex-col items-center pb-16 md:pb-0">
         <div className="mx-auto w-full max-w-7xl px-4 py-6">
           <div className="mb-8 flex flex-col-reverse md:flex-row md:items-start md:justify-between md:gap-4">
-            <ExploreCategories />
+            <ExploreCategories
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+            />
             <SearchProducts />
           </div>
 
@@ -21,7 +28,7 @@ export default function ExplorePage() {
               </div>
             }
           >
-            <ExploreGrid />
+            <ExploreGrid activeCategory={activeCategory} />
           </Suspense>
         </div>
       </main>

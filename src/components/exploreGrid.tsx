@@ -11,18 +11,32 @@ import { toast } from "sonner";
 import { addAssociateTag } from "./ProductCard";
 import { useInView } from "react-intersection-observer";
 
-async function fetchItems({ pageParam = 0 }): Promise<{
+async function fetchItems({
+  pageParam = 0,
+  search,
+}: {
+  pageParam?: number;
+  search?: string;
+}): Promise<{
   data: Product[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/products?cursor=${pageParam}&limit=24`, {});
+  console.log(`/api/explore?cursor=${pageParam}&limit=24&search=${search}`);
+  const res = await fetch(
+    `/api/explore?cursor=${pageParam}&limit=24&search=${search}`,
+    {},
+  );
   if (!res.ok) {
     throw new Error("Failed to load items");
   }
   return res.json() as Promise<{ data: Product[]; nextCursor?: number }>;
 }
 
-export default function ExploreGrid() {
+interface ExploreGridProps {
+  activeCategory: string;
+}
+
+export default function ExploreGrid({ activeCategory }: ExploreGridProps) {
   const [liked, setLiked] = useState<Record<string, boolean>>({});
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const { addItem } = useCart();
@@ -41,8 +55,8 @@ export default function ExploreGrid() {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["ExploreProducts"],
-    queryFn: fetchItems,
+    queryKey: ["ExploreProducts", activeCategory],
+    queryFn: ({ pageParam }) => fetchItems({ pageParam, search: activeCategory }),
     refetchOnWindowFocus: false,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,

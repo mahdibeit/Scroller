@@ -1,27 +1,31 @@
 "use client";
 
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const categories = [
   { id: "all", name: "All" },
   { id: "under-100", name: "Under $100" },
-  { id: "healthy-snacks", name: "Healthy Snacks" },
-  { id: "daily-deals", name: "Daily Deals" },
-  { id: "staff-picks", name: "Staff Picks" },
+  { id: "clothe", name: "Clothes" },
   { id: "under-50", name: "Under $50" },
-  { id: "quirky-finds", name: "Unique & Quirky" },
-  { id: "trending-now", name: "Trending Now" },
-  { id: "life-hacks", name: "Life Hacks" },
-  { id: "gift-ideas", name: "Gift Ideas" },
-  { id: "office-essentials", name: "Home & Office Essentials" },
-  { id: "outdoor-adventures", name: "Outdoor Adventures" },
-  { id: "travel-essentials", name: "Travel Essentials" },
+  { id: "Unique", name: "Unique & Quirky" },
+  { id: "gift", name: "Gift Ideas" },
+  { id: "office", name: "Home & Office Essentials" },
+  { id: "outdoor", name: "Outdoor Adventures" },
+  { id: "travel", name: "Travel Essentials" },
+  { id: "game", name: "Games" },
+  { id: "electronics", name: "Electronics" },
+  { id: "health-snacks", name: "Healthy Snacks" },
 ];
 
-export default function ExploreCategories() {
-  const [activeCategory, setActiveCategory] = useState("all");
+interface ExploreCategoriesProps {
+  activeCategory: string;
+  setActiveCategory: (id: string) => void;
+}
 
+export default function ExploreCategories({
+  activeCategory,
+  setActiveCategory,
+}: ExploreCategoriesProps) {
   return (
     <div className="md:max-w-[70%]">
       <div className="scrollbar-hide relative flex overflow-x-auto">
