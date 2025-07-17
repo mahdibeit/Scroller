@@ -8,6 +8,7 @@ import { Loader2 } from "lucide-react";
 
 export default function ExplorePage() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -18,7 +19,7 @@ export default function ExplorePage() {
               activeCategory={activeCategory}
               setActiveCategory={setActiveCategory}
             />
-            <SearchProducts />
+            <SearchProducts search={search} setSearch={setSearch} />
           </div>
 
           <Suspense
@@ -28,7 +29,7 @@ export default function ExplorePage() {
               </div>
             }
           >
-            <ExploreGrid activeCategory={activeCategory} />
+            <ExploreGrid activeCategory={activeCategory} search={search} />
           </Suspense>
         </div>
       </main>

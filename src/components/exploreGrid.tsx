@@ -34,9 +34,13 @@ async function fetchItems({
 
 interface ExploreGridProps {
   activeCategory: string;
+  search?: string;
 }
 
-export default function ExploreGrid({ activeCategory }: ExploreGridProps) {
+export default function ExploreGrid({
+  activeCategory,
+  search,
+}: ExploreGridProps) {
   const [liked, setLiked] = useState<Record<string, boolean>>({});
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
   const { addItem } = useCart();
@@ -55,8 +59,15 @@ export default function ExploreGrid({ activeCategory }: ExploreGridProps) {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["ExploreProducts", activeCategory],
-    queryFn: ({ pageParam }) => fetchItems({ pageParam, search: activeCategory }),
+    queryKey: [
+      "ExploreProducts",
+      search && search.trim() !== "" ? search : activeCategory,
+    ],
+    queryFn: ({ pageParam }) =>
+      fetchItems({
+        pageParam,
+        search: search && search.trim() !== "" ? search : activeCategory,
+      }),
     refetchOnWindowFocus: false,
     getNextPageParam: (last) => last.nextCursor,
     initialPageParam: 0,

@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { Search as SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-export default function SearchProducts() {
-  const [query, setQuery] = useState("");
+interface SearchProductsProps {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}
 
+export default function SearchProducts({
+  search,
+  setSearch,
+}: SearchProductsProps) {
   return (
     <div>
       <div className="relative py-2">
@@ -15,8 +20,8 @@ export default function SearchProducts() {
         <Input
           type="search"
           placeholder="Search products..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className={cn(
             "pl-9",
             "bg-card dark:bg-card/30",
