@@ -17,7 +17,7 @@ async function fetchItems({
   nextCursor?: number;
 }> {
   const res = await fetch(
-    `/api/products?cursor=${pageParam}&influencer=${influencerId}&limit=12`,
+    `/api/influencer?cursor=${pageParam}&influencer=${influencerId}&limit=12`,
   );
   if (!res.ok) {
     throw new Error("Failed to load items");
@@ -90,7 +90,7 @@ export default function InfluencerProducts({
           ? "Loading more..."
           : hasNextPage
             ? "Scroll to load more"
-            : "— End of products —"}
+            : ""}
       </div>
     </>
   );

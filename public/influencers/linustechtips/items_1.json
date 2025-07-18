@@ -1,0 +1,16 @@
+[
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "993df632-e7f6-4d27-aa2a-cf7caf8bb7af",
+    "asin": "B07X5MZ93B",
+    "title": "Amish Country Popcorn | Popcorn Kernel Variety Set with ButterSalt | 6-4 oz Bags | Old Fashioned, Non-GMO and Gluten Free",
+    "price": "40.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/91zg7LQpL1L._AC_SX679_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B07X5MZ93B",
+    "description": ["", "", "", "", ""],
+    "rating": "4.6",
+    "scraped_at": "2025-05-10 20:09:51",
+    "review_count": 1261
+  }
+]
