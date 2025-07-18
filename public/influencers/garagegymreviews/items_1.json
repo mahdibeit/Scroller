@@ -1,0 +1,38 @@
+[
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "b231cb28-2257-4d62-aad7-922e8ae40956",
+    "asin": "B0CX1CF6KT",
+    "title": "BRILLIHOOD Hexagon Garage Lights Honeycomb LED Hex Light, 672W, 80640LM, 6500K Super Bright, 14 Grid Systems Car Detailing Lights with Rectangular Frame for Garage Warehouse Workshop Basement Gym",
+    "price": "609.74",
+    "main_image_url": "https://m.media-amazon.com/images/I/71c-XSXGUSL._AC_SY700_.jpg",
+    "page_url": "https://amazon.ca/dp/B0CX1CF6KT",
+    "description": [
+      "Premium Materials - Brillihood honeycomb led lights boast a robust construction using PC frames and covers. These materials ensure durability, lightness, and compactness, with no exposed wires for enhanced safety and prevention of electrical leakage",
+      "Exceptional Brightness - Illuminate your garage, basement, or workbench with the super-bright 672W hexagon car detailing light system. Achieving up to 120lm/w, it delivers an impressive brightness of 80640lm, complemented by a 6500K color temperature for optimal lighting",
+      "Hexagonal with Frame Design - Unique hexagonal with frame design adds a modern & stylish look to your garage or workspace. The rectangular frame measures 15.88 ft*7.97 ft, the very size for a parking space, making your private carspace neater and brighter",
+      "Comprehensive Package - Each set of hex light includes 57pcs 440mm light tubes, 12pcs 1175mm light tubes, 17pcs 2-way (120°) connectors, 8pcs 2-way (180°) connectors, 3pcs 2-way (90°) connectors, 27pcs 3-way (120°) connectors, 1pc 3-way (90°) connector, 1 pc power cord and 2pcs power cables. All components are thoughtfully included for a convenient installation process",
+      "Confidence in Purchase - Trust in the longevity of the garage lights ceiling LED fixture, boasting a lifespan of up to 50,000 hours. Buy with confidence and elevate your lighting experience"
+    ],
+    "rating": "4.8",
+    "scraped_at": "2025-07-17 22:57:55",
+    "review_count": 27
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "e5309daa-ec36-4c96-b649-13b235e37fff",
+    "asin": "B0CRD5S79S",
+    "title": "Yes4all LAT pulldown Machine with seat",
+    "price": "487.10",
+    "main_image_url": "https://m.media-amazon.com/images/I/71BcGlIcyVL.__AC_SX700_SY700_QL70_ML2_.jpg",
+    "page_url": "https://amazon.ca/dp/B0CRD5S79S",
+    "description": [
+      "LAT pulldown machine with seat"
+    ],
+    "rating": "4.3",
+    "scraped_at": "2025-07-17 22:58:19",
+    "review_count": 60
+  }
+]

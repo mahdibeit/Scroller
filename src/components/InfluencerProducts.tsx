@@ -66,7 +66,11 @@ export default function InfluencerProducts({
   }
 
   if (!data?.pages[0]?.data.length) {
-    return <div>No products found</div>;
+    return (
+      <div className="flex items-center justify-center py-20">
+        <p className="text-muted-foreground">No items found</p>
+      </div>
+    );
   }
 
   // Flatten and remove duplicates

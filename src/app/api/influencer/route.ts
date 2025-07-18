@@ -19,6 +19,18 @@ export async function GET(req: Request) {
     "public",
     `influencers/${influencer}/items_1.json`,
   );
+  // check if file does not exists return empty array
+  try {
+    await fs.access(filePath);
+  } catch {
+    return NextResponse.json(
+      { data: [] },
+      {
+        status: 200,
+      },
+    );
+  }
+
   const fileText = await fs.readFile(filePath, "utf-8");
 
   const all: Product[] = JSON.parse(fileText) as Product[];

@@ -2,15 +2,387 @@
   {
     "merchandise": "amazon",
     "country": "ca",
-    "id": "993df632-e7f6-4d27-aa2a-cf7caf8bb7af",
-    "asin": "B07X5MZ93B",
-    "title": "Amish Country Popcorn | Popcorn Kernel Variety Set with ButterSalt | 6-4 oz Bags | Old Fashioned, Non-GMO and Gluten Free",
-    "price": "40.99",
-    "main_image_url": "https://m.media-amazon.com/images/I/91zg7LQpL1L._AC_SX679_.jpg",
-    "page_url": "https://www.amazon.ca/dp/B07X5MZ93B",
-    "description": ["", "", "", "", ""],
+    "id": "2c0cb1d0-e1c1-4b2b-b0a3-9ab3bc2bb742",
+    "asin": "B0DWMCJ81J",
+    "title": "Mammotion YUKA Mini 500 Robotic Lawn Mower for 0.12 Acre,Ultrasense AI Vision+ RTK Positioning, Auto Mapping, App Control, 50% Slope,Perimeter Wire Free, 15 Mowing Zones Management",
+    "price": "1,298.00",
+    "main_image_url": "https://m.media-amazon.com/images/I/61VDB5YTwjL._AC_SX569_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0DWMCJ81J",
+    "description": [
+      "The Entry-Level User Friendly:YUKA mini 500 robotic lawn mower is ideal for small yards. With advanced AI vision technology, YUKA mini creates a virtual map all by itself in the Mammotion app in only 10 minutes-no need to manually drive it around the property anymore, making setup a breeze.",
+      "Advanced UltraSense AI Vision: The YUKA mini mows cleanly and accurately along boundaries, even without satellite signals. It detects invisible borders to stay within designated areas and uses advanced image processing to differentiate grass from non-grass surfaces, avoiding restricted zones. With over 200 AI object recognition capabilities, it excels at detecting and avoiding obstacles.",
+      "Efficient Mowing Performance: Capable of handling slopes up to 50% and clear vertical obstacles up to 1.4 inches, YUKA mini is suitable for over 99% of residential yards. With adjustable cutting heights (20-60mm / 0.8-2.4 inches) and one floating cutting disc design, it delivers a carpet-like lawn. Smart route planning allows you to select various mowing paths via the app.",
+      "Multi-Zone Management & APP Control:Easily manage up to 15 work zones through the app. Create seamless pathways between different areas and set customizable no-go zones for a tailored lawn care experience. Its self-charging feature ensures it returns to recharge and resumes work automatically, while the Mammotion app allows you to monitor your yard anytime, anywhere.You can also implement Creative Lawn Printing with custom patterns within Mammotion app.",
+      "Ultimate Anti-Theft & Easy Maintenance: Enjoy 24/7 monitoring with GPS tracking, app notifications, ownership authentication for maximum security. Weighing just 23 pounds, this lawn mower is easy to maintain and features an IPX6 waterproof rating.",
+      "Worry-free After Service: The package includes YUKA mini 500*1, Charging Station*1, One Set of Blades (6 PCS), RTK Reference Station*1.We offer a 3-year warranty and 24/7 after-sales service."
+    ],
+    "rating": "4.1",
+    "scraped_at": "2025-07-17 21:49:53",
+    "review_count": 394
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "8bb8ee98-8307-4ac0-ba63-7b219b85d59e",
+    "asin": "B0CBHMYMN9",
+    "title": "Elgato Wave Mic Arm LP White - Premium Low Profile Microphone Arm with Cable Management, Desk Clamp, Versatile Mounting and Fully Adjustable, perfect for Podcast, Streaming, Gaming, Home Office",
+    "price": "139.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/41psex56o8L._AC_SX522_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0CBHMYMN9",
+    "description": [
+      "Premium Design: all-metal, anti-torsion construction.",
+      "Low Profile: sits below the shoulder line for an unobstructed view.",
+      "Cable Channels: magnetic covers hide cables and provide easy access.",
+      "Fully Adjustable: 360-degree horizontal and 90-degree upper vertical rotation.",
+      "Long Reach: 740 mm / 29.1 in horizontal reach covers large desks."
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:50:07",
+    "review_count": 571
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "933ff236-b15d-45de-ba62-8b9c723f2826",
+    "asin": "B0CSYKJZJX",
+    "title": "Okinos Aqua 7, Pre-Installed 6 × 120mm PWM ARGB Fan, ATX Mid Tower PC Case, Computer case with Panoramic View Tempered Glass Front & Side Panel, Type C Port, Gaming PC Case, Black",
+    "price": "214.35",
+    "main_image_url": "https://m.media-amazon.com/images/I/81057nnk9aL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0CSYKJZJX",
+    "description": [
+      "【Item Dimension & Motherboard Support】436mm * 210mm * 486mm (D * W * H)；Compatible with ATX / MATX / ITX motherboards;",
+      "【Panoramic Design with 270°Wide Angle View】The 270°panoramic mid tower case features fully glass-covered front and side panels, providing a clear view of internal hardware. Diamond cut angles offer a transparent and aesthetically pleasing display, creating a unique visual effect;",
+      "【Synchronized Dual-Channel Airflow Design with 3 X H12 Reverse PWM ARGB Fans at the PSU Chamber and 2 X H12 Reverse PWM ARGB Fans at the Side】Carefully designed vertical and horizontal airflow channels. At the top of the PSU chamber, experience the intricately crafted vertical airflow path with 3 x H12R PWM ARGB reverse fans, ensuring efficient heat dissipation. Meanwhile, the lateral side showcases the horizontal airflow channel, achieved by 2 x H12R PWM ARGB reverse fans and 1 x H12 PWM ARGB fan at the rear;",
+      "【Exquisite Steel Mesh - 1.2mm, Finer Grid Compare to 3.0mm】The uniquely crafted 1.2mm mesh design optimizes heat dissipation and prevents heat buildup, ensuring streamlined airflow. This fine mesh surpasses both aesthetically and functionally over the traditional 3.0mm counterparts, providing excellent dust resistance, broad applicability, and durability;",
+      "【Multi-Functional Zone for Readily Accessible User-Computer Interaction】Introducing feature-rich Multi-function Zone, effortlessly manage your device's power status with the power switch, customize your case lighting with the ARGB fan control buttons, and enjoy seamless connectivity with two USB 3.0 ports, audio jacks, and a lightning-fast Type-C 3.2 Gen 2 (10Gbps) interface. Experience fast data transfer, high-quality audio, and easy device connections—all at your fingertips;",
+      "【Hurricane 120mm Reversed PWM ARGB Fan】With 9 extended arc blades, carefully crafted to increase airflow by 20%, this advanced fan design ensures efficient heat dissipation, promoting a longer service life for internal components in mainstream cases. The innovative pillar frame design features screw holes that penetrate both sides of the fan, reducing impact sound and maintaining stable performance at a low noise level of 20.2 dBA. Additionally, reinforced ribs on the outer frame enhance overall stability, enabling effective and steady airflow output of 53.38 CFM;",
+      "【Advanced Quick-Release Panels】Facilitated easy removal of the front and side glass without the need for screws, enhanced convenience during disassembly with a secure rivet-mounted mechanism, minimizes the risk of accidental glass breakage for added durability and safety;"
+    ],
+    "rating": "4.5",
+    "scraped_at": "2025-07-17 21:50:20",
+    "review_count": 354
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "f7bcfde8-fc58-4acf-a349-6ba01c986b97",
+    "asin": "B0DVZSG8D5",
+    "title": "AMD Ryzen 9 9950X3D 16-Core Processor",
+    "price": "958.98",
+    "main_image_url": "https://m.media-amazon.com/images/I/71hZfMZNZuL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0DVZSG8D5",
+    "description": [
+      "AMD Ryzen 9 9950X3D Gaming and Content Creation Processor"
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:50:32",
+    "review_count": 384
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "1accbe6c-52c7-4210-9cdc-32de8cfcda2b",
+    "asin": "B0BL6DQSB3",
+    "title": "SMLIGHT SLZB-06 - Zigbee 3.0 to Ethernet,USB,and WiFi Gateway Coordinator with PoE, Works with Zigbee2MQTT, Home Assistant, ZHA",
+    "price": "113.60",
+    "main_image_url": "https://m.media-amazon.com/images/I/51m6ustnnsL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0BL6DQSB3",
+    "description": [
+      "1.SLZB-06 is a Zigbee to Ethernet/USB/WiFi adapter with POE support, comes pre-flashed and ready to use. Can be used as a Zigbee 3.0 gateway in the open source automation platforms – Zigbee2MQTT, Home Assistant, ZHA.",
+      "2.Works in both modes – LAN and USB. Mode can be changed in firmware or via button.",
+      "3.Can add as many Zigbee coordinators to one server as you want. So you can easily cover different rooms, buildings and connect them to the same Home Assistant instance.",
+      "4.You can power the device through POE or type-C. microUSB-typeC adapter is included in the package as well.",
+      "5.Zigbee SoC CC2652P features +20dB gain, +5dB antenna included."
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:50:44",
+    "review_count": 112
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "3975200c-e278-4674-9f33-a4e407ade307",
+    "asin": "B0CMJSH15D",
+    "title": "GIGABYTE B650 AORUS Elite AX ICE (AM5/ LGA 1718/ AMD/ B650/ ATX/ 5-Year Warranty/ DDR5/ Triple M.2/ PCIe 5.0/ USB 3.2 Gen2X2 Type-C/WiFi 6E/ 2.5GbE LAN/Snow White/EZ-Latch/Motherboard)",
+    "price": "269.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/712JD6BVtxL._AC_SX355_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0CMJSH15D",
+    "description": [
+      "AMD AM5 Socket: Supports AMD Ryzen 7000 Series Processors",
+      "5-Year Warranty",
+      "Dual Channel DDR5: 4*DIMMs & Intel XMP Memory Module Support",
+      "Commanding Power Design: Twin 12+2+2 Phases, 8-Layer 2X Copper PCB",
+      "Cutting-Edge Thermal Design & M.2 Thermal Guard: To Ensure VRM Power Stability & M.2 SSD Performance",
+      "Next Gen Connectivity: PCIe 5.0, PCIe 5.0 NVMe x4 M.2, Front & Rear USB 3.2 Gen 2 Type-C",
+      "EZ-Latch: PCIe 5.0 & M.2 Connectors with a Quick Release & Screwless Design"
+    ],
+    "rating": "4.3",
+    "scraped_at": "2025-07-17 21:50:57",
+    "review_count": 433
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "3fcbaf55-36cd-4b2d-9058-ae0ea5b4143a",
+    "asin": "B083G6P7WH",
+    "title": "VIVO Dual Monitor Desk Mount, Heavy Duty Fully Adjustable Steel Stand, Holds 2 Computer Screens up to 30 inches and Max 22lbs Each, White, STAND-V002W",
+    "price": "59.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/61hIo+D3i2L._AC_SY700_SX700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B083G6P7WH",
+    "description": [
+      "Fits 13\" to 30\" Screens - Dual monitor mount fitting two screens 13” to 30” in size and up to 22 lbs in weight each with VESA 75x75mm or 100x100mm backside mounting holes. Cable management clips are provided along the arms and center pole.",
+      "Articulation & Height Adjustment - Adjustable arm offers +90° to -90° tilt, 180° swivel, 360° rotation, and height adjustment along the center pole. Monitors can be placed in portrait or landscape orientation.",
+      "Heavy Duty C-Clamp - Mounts to the back of your desk (up to 3.25” thick) via a heavy-duty C-clamp or optional grommet mount.",
+      "Easy Installation - Mounting your monitors is a simple process with detachable VESA bracket plates. We provide the hardware and easy-to-follow instructions for assembly.",
+      "We've Got You Covered - Sturdy steel design is backed with a 3 Year Manufacturer Warranty and friendly tech support to help with any questions or concerns."
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:51:11",
+    "review_count": 56987
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "5b1666cb-99d2-4da1-a318-753b1bb655a5",
+    "asin": "B094NW5B68",
+    "title": "Aeotec Z-Stick 7 Plus, Zwave Plus USB to Create Z-Wave hub, Gateway Controller with 700 Series ZWave, SmartStart and S2, Works with Raspberry Pi 4, Compatible with Home Assistant",
+    "price": "85.31",
+    "main_image_url": "https://m.media-amazon.com/images/I/51j3xDW-vPS._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B094NW5B68",
+    "description": [
+      "Works with Raspberry Pi, Windows, Mac, Linux to create a zwave hub for control of Z-Wave and Z-Wave Plus devices.",
+      "German engineered to use Aeotec exclusive Gen7 and 700 series technologies. Offers ZWave SmartStart and S2 security.",
+      "Faster, further. Z-Stick 7 wirelessly transmits up to 250% further in open-place space and with 18% faster CPU",
+      "Compatible with Z-Wave enabled, home automation software including Home Assistant and Indigo 7. No software included."
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:51:23",
+    "review_count": 224
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "be801dcf-49b9-4e79-af81-0683cc1766a8",
+    "asin": "B0DJPY63XL",
+    "title": "Lian Li O11Vision Compact White-Steel-Tempered Glass ATX Mid Tower Computer Case-Back Connect Support-O11VPW",
+    "price": "179.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/61GGKCt2tKL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0DJPY63XL",
+    "description": [
+      "In collaboration with PCMasterRace",
+      "The case included tempered glass panels on the front, top, and left side",
+      "A top mesh panel included for the installation of a 360 AIO.",
+      "Compatible with back-connect motherboards",
+      "The innovative design conceals AIO tubing within the second chamber when the AIO is positioned on the side"
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:51:35",
+    "review_count": 95
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "cb9b5662-19cf-4ded-9c86-b5183f7e0383",
+    "asin": "B0BBJDS62N",
+    "title": "AMD Ryzen™ 5 7600X 6-Core, 12-Thread Unlocked Desktop Processor",
+    "price": "209.00",
+    "main_image_url": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0BBJDS62N",
+    "description": [
+      "Pure gaming performance with smooth 100+ FPS in the world's most popular games",
+      "6 Cores and 12 processing threads, based on AMD \"Zen 4\" architecture",
+      "5.3 GHz Max Boost, unlocked for overclocking, 38 MB cache, DDR5-5200 support",
+      "For the state-of-the-art Socket AM5 platform, can support PCIe 5.0 on select 600 Series motherboards",
+      "Cooler not included"
+    ],
+    "rating": "4.8",
+    "scraped_at": "2025-07-17 21:51:48",
+    "review_count": 3972
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "bb87f93b-b64f-4961-abcf-bf4d1423acf8",
+    "asin": "B0DK4SNXYF",
+    "title": "Thermalright Elite Vision 360 ARGB White CPU AIO Cooler,IPS LCD Screen with 320 * 320 Resolution,for AM5&Intel 1700/1851,High-Performance CPU Water-Cooled with 2.73in Removable Liquid Crystal Display",
+    "price": "162.84",
+    "main_image_url": "https://m.media-amazon.com/images/I/31sS1kHSQtL._SY445_SX342_QL70_ML2_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0DK4SNXYF",
+    "description": [
+      "[Magnetic suction removable LCD screen] The water pump of the water-cooled cooler is a brand new generation of water pump system, which not only enhances the heat absorption efficiency, but also decreases the operation noise. Unlike ordinary water pumps, the water pump is a new IPS LCD screen, which can support DIY various static & dynamic picture switching, which increases the visual interest at the same time of high heat dissipation.",
+      "[High Cooling Triple Fan] With the TL-K12W's fan, the performance fan with PWM temperature control function has soft silicone corner pads all around to reduce friction and vibration, and small curved ARGB lines all around to enhance the value of the cooling fan. 2150 RPM high speed combined with the 360 specification cooling row can quickly take away the high temperature.",
+      "[Excellent Bearing] The fan adopts STABLY-FDB V2 bearing (abbreviation: S-FDB V2 bearing), which can solve the problem of fan blade shaking and vibration in the lifting mode, and greatly improve the performance of the cooling fan.The S-FSB V2 bearing has a longer service life and ensures the lifespan of the CPU water cooling radiator.",
+      "[2.73-inch display] The heat dissipation LCD screen supports personalised moving picture display, can freely monitor the display of various parameters of the system, the background format as well as custom text can be displayed, super display play.",
+      "[Wide range of compatibility] The radiator supports Intel 14th generation + AMD RYZEN 7000, Supported slots: AMD: AM4/AM5, Intel: LGA1150/1151/1155/1156/1200/2011/2066/1700/1851, Comes with the corresponding mounting grommets, installation steps are simple, it is recommended to install it according to the Installation video or instructions for installation. If you have any questions, please contact our customer service."
+    ],
+    "rating": "3.9",
+    "scraped_at": "2025-07-17 21:52:00",
+    "review_count": 5
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "f9d6bd27-c0ab-42c3-9dfb-f09997ded3f5",
+    "asin": "B07M8DM8W5",
+    "title": "Valencia Tuscany Home Theater Seating | Premium Top Grain Italian Nappa 11000 Leather, Power Reclining, Power Lumbar Support, Power Headrest (Row of 2 Loveseat, Black)",
+    "price": "3,099.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/71iYts+D0AL._AC_SX569_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B07M8DM8W5",
+    "description": [
+      "Diamond Stitch Leather – stylish finish so you have the best of both worlds: designer-chic with the ultimate comfort.",
+      "Reclining mechanism - recline comfortably while saving space with the wall hugging feature. This feature allows you to conserve space.",
+      "Top grain Nappa 11000 genuine leather - perfect for adding a luxurious look to your home theater room",
+      "Control system - includes LED ambient base, LED cup holder, and USB feature to charge your devices while you watch a movie"
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:52:13",
+    "review_count": 412
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "e217b758-7396-477b-8815-99761f137cc4",
+    "asin": "B0CKCYBN84",
+    "title": "Patriot Burst Elite 1.92TB Internal SSD 2 Pack - SATA 3 2.5\" - Solid State Drive - PBE192TS25SSD2B",
+    "price": "229.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/81O53F9Z0fL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0CKCYBN84",
+    "description": [
+      "Capacity: 1.92TB 2 Pack Bulk",
+      "Sequential Read (CDM): up to 450MB/s; Sequential Write (CDM): up to 320MB/s",
+      "Latest SATA 3 controller",
+      "ECC Technology",
+      "TRIM Support"
+    ],
     "rating": "4.6",
-    "scraped_at": "2025-05-10 20:09:51",
-    "review_count": 1261
+    "scraped_at": "2025-07-17 21:52:26",
+    "review_count": 329
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "1daf0a29-ebbe-433d-97ef-733574b9dd8e",
+    "asin": "B0D3WLV9Q1",
+    "title": "Insta360 GO 3S - 128 GB Black 4K Tiny Portable Vlogging Camera, Hands-Free POVs, Mount Anywhere, Stabilization, 140 Min Battery Life, 10m Waterproof, Pet POV",
+    "price": "599.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/71LY8Or+yuL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0D3WLV9Q1",
+    "description": [
+      "1.4OZ (39G) & THUMB SIZED- Unlock limitless creativity with Insta360 GO 3S, a tiny, powerful 4K camera weighing only 1.4oz (39g). High-quality footage in a tiny but mighty package.",
+      "4K HANDS-FREE POVS - A powerful chip for higher quality footage and a new wide-angle lens. Capture 4K hands-free POVs with new MegaView FOV for ultra-wide shots with less distortion.",
+      "USE THE ACTION POD - Huge 2.2\" flip screen, remote control, live preview and a massive 140-minute battery life. Supports charging the camera while shooting, too.",
+      "FLOWSTATE STABILIZATION - Gimbal-like FlowState Stabilization and Horizon Lock ensure your shots are always smooth and level, no matter what you throw GO at.",
+      "MOUNT ANYWHERE - With its magnetic design and array of handy accessories, get creative and film angles no other camera can handle. That's the power of tiny.",
+      "RUGGED & WATERPROOF - Capture underwater moments effortlessly with the IPX8 waterproof GO 3S or the IPX4 resistant Action Pod. Go down to as deep as 60m (197ft) with the Dive Case, too.",
+      "EASY TO SHOOT - Faster, efficient shots with QuickCapture, with just a single press. New Gesture Control & Voice Control options offer easier shooting if GO 3S is out of reach."
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:52:40",
+    "review_count": 802
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "7d0ac402-f46b-4be1-a1ca-87e93b36cf2e",
+    "asin": "B0D22HBFK1",
+    "title": "UGREEN NASync DXP2800 2-Bay Desktop NAS, Auto Backup Organize Phones/PCs Private Cloud Storage for Home & Office, Intel N100 Quad-core CPU, 8GB DDR5 RAM, 2.5GbE, Dual M.2 Slots, 4K HDMI (Diskless)",
+    "price": "499.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/61WvMIHMDcL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0D22HBFK1",
+    "description": [
+      "Spend Less, Store More: Unlike costly cloud storage subscriptions, NAS only requires a one-time purchase with no ongoing fees, offering much better long-term value. Storing your data locally also provides far greater data security and gives you complete control.",
+      "Massive Storage Capacity: Store up to 76TB, giving you more than enough space to back up all your files, photos, and videos. Automatically create photo albums and enjoy your personal home cinema.",
+      "User-Friendly App: Simple setup and easy file-sharing on Windows, macOS, Android, iOS, web browsers, and smart TVs, giving you secure access from any device.",
+      "AI-Powered Photo Album: Automatically organizes your photos by recognizing faces, scenes, objects, and locations. It can also instantly remove duplicates, freeing up storage space and saving you time.",
+      "Secure Private Cloud: Keep full control over your data with advanced encryption, ensuring your files and personal information are always protected.",
+      "Best Performance in Class: Equipped with a 12th Gen Intel N100 processor and a 2.5GbE network port, this NAS can comfortably run multiple apps at the same time and transfer a 1GB file in as little as 3 seconds.",
+      "Widely Compatible: UGREEN NASync is compatible with Western Digital, Seagate, Toshiba, and more third-party hard drives. Please check our compatibility list for full details. Note: Storage hard drives are not included and need to be purchased separately.",
+      "2-Year Warranty: Enjoy 2 years of protection with UGREEN."
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:52:54",
+    "review_count": 278
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "02bddd47-6952-4464-96e4-4ee7c21e0ae5",
+    "asin": "B0CD7WZRHF",
+    "title": "CORSAIR Vengeance RGB DDR5 RAM 32GB (2x16GB) 6000MHz CL30 Intel XMP iCUE Compatible Computer Memory - White (CMH32GX5M2B6000C30W)",
+    "price": "190.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/61wJJ1DrsTL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0CD7WZRHF",
+    "description": [
+      "Dynamic Ten-Zone RGB Lighting: Illuminate your system with ten individually addressable, ultra-bright RGB LEDs per module, encased in a panoramic light bar for vivid RGB lighting from any viewing angle.",
+      "Onboard Voltage Regulation: Enables easier, more finely-tuned, and more stable overclocking through CORSAIR iCUE software than previous generation motherboard control.",
+      "Custom Intel XMP 3.0 Profiles: Customize and save your own XMP profiles via iCUE to tailor performance by app or task for greater efficiency.",
+      "Create and Customize: Choose from dozens of preset lighting profiles, or create your own in iCUE.",
+      "Part Number: CMH32GX5M2B6000C30W | Latency: 30-36-36-76 | Voltage: 1.4V | Compatibility: Intel 600 and 700 Series"
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:53:07",
+    "review_count": 255
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "3b2267b6-573a-4124-ac46-9c83d3caa159",
+    "asin": "B08LCNNGZN",
+    "title": "ASUS ROG Strix XG27AQ 27” HDR Gaming Monitor, 1440P WQHD (2560 x 1440), Fast IPS, 170Hz, 1ms, G-SYNC Compatible, Extreme Low Motion Blur Sync, Eye Care, HDMI DisplayPort USB 3.0 Hub, DisplayHDR 400",
+    "price": "290.02",
+    "main_image_url": "https://m.media-amazon.com/images/I/81TS-4cVHBL.__AC_SX700_SY700_QL70_ML2_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B08LCNNGZN",
+    "description": [
+      "27-inch WQHD (2560 x 1440) FastIPS gaming monitor with ultrafast 170Hz (overclocked) refresh rate designed for professional gamers and immersive gameplay",
+      "ASUS FastIPS technology enables a 1ms response time (GTG) for sharp gaming visuals with high frame rates.",
+      "Certified as G-SYNC Compatible, delivering a seamless, tear-free gaming experience by enabling VRR (variable refresh rate) by default. Make sure to tighten down the cable on both the monitor and the computer end while setup",
+      "ASUS Extreme Low Motion Blur Sync (ELMB SYNC) technology enables ELMB together with G-SYNC Compatible, eliminating ghosting and tearing for sharp gaming visuals with high frame rates.",
+      "High Dynamic Range (HDR) technology with professional color gamut delivers contrast and color performance that meets DCI-P3 95% color gamut and DisplayHDR 400 certification",
+      "Rich connectivity with DisplayPort 1.2, HDMI (v2.0) x2 ports and USB3.0 hub (upstreamx1, downstreamx2)",
+      "What’s in the Box: DisplayPort cable, HDMI cable, USB cable, Power Cord & Adapter, ROG stickers, Color calibration report, Warranty card, Quick Start Guide. Digital Signal Frequency : HDMI: 30~223 KHz (H) / 48~144 Hz (V)"
+    ],
+    "rating": "4.4",
+    "scraped_at": "2025-07-17 21:53:19",
+    "review_count": 569
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "5cc87349-4c10-403b-98d6-7e23d1c5f0a4",
+    "asin": "B00ILALQZO",
+    "title": "Yamaha HS5 W 5-Inch Powered Studio Monitor, White",
+    "price": "269.99",
+    "main_image_url": "https://m.media-amazon.com/images/I/61HmASZcGSL._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B00ILALQZO",
+    "description": [
+      "Package Dimensions: 21 L x 16 H x 16 W (inches)",
+      "Package Weight: 1 pounds",
+      "Country of Origin : Indonesia",
+      "2-Way bass-reflex bi-amplified nearfield studio monitor with 5 inch cone woofer and 1 inch dome tweeter",
+      "54Hz-30kHz frequency response"
+    ],
+    "rating": "4.6",
+    "scraped_at": "2025-07-17 21:53:32",
+    "review_count": 289
+  },
+  {
+    "merchandise": "amazon",
+    "country": "ca",
+    "id": "45ce72b5-544a-4cda-9b8e-c1de72b386d0",
+    "asin": "B0B7CMZ3QH",
+    "title": "WD_BLACK 2TB SN850X NVMe Internal Gaming SSD Solid State Drive - Gen4 PCIe, M.2 2280, Up to 7,300 MB/s - WDS200T2X0E",
+    "price": "204.97",
+    "main_image_url": "https://m.media-amazon.com/images/I/61KeSQhDm4L._AC_SY700_.jpg",
+    "page_url": "https://www.amazon.ca/dp/B0B7CMZ3QH",
+    "description": [
+      "TRANSFORM YOUR PC. Get top-tier performance and ridiculously short load times for your gaming PC or workstation with insane speeds up to 7,300 MB/s (2)",
+      "MORE ROOM, MORE GAMES. Capacities up to 8TB (1) built with Western Digital TLC 3D NAND, means you get to download more games — and stop deleting your favorites.",
+      "HEATSINK FOR THE WIN. All capacities have an optional heatsink version to help maintain peak performance through your most intense gaming sessions.",
+      "DO MORE WITH DASHBOARD. The downloadable WD_BLACK Dashboard (Windows only) monitors your drive’s health, lets you customize your RGB lighting (heatsink versions only), and can automatically detect games to turn on Game Mode 2.0.",
+      "FUTURE-FORWARD FEATURES. The WD_BLACK SN850X boasts a powerful suite of features, including Predictive Loading, Overhead Balancing, and Adaptive Thermal Management (ATM)."
+    ],
+    "rating": "4.7",
+    "scraped_at": "2025-07-17 21:53:45",
+    "review_count": 27159
   }
 ]

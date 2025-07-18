@@ -27,7 +27,7 @@ const FEATURED_INFLUENCER_IDS = [
   "mkbhd", // Popular tech reviewer
   "linustechtips", // Large tech channel
   "ijustine", // Tech lifestyle
-  "athleanx", // Popular fitness channel
+  "andreajeanco", // Popular fitness channel
 ];
 
 // Get featured influencers by ID
