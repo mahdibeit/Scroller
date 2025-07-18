@@ -71,6 +71,7 @@ export default function Home() {
         </p>
       </header>
 
+      {/* Categories section */}
       <section>
         <h2 className="mb-6 text-2xl font-semibold">Browse by Category</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -96,7 +97,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      {/* Featured Influencers Section */}
       <section className="mt-12">
         <h2 className="mb-6 text-2xl font-semibold">Featured Influencers</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

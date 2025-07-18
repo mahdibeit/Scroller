@@ -23,7 +23,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "Linus Tech Tips",
       followers: "13.8M",
       productCount: 42,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/linustechtips/profile.jpg",
       bio: "Tech reviews, guides, and unboxings from the LTT team",
     },
     {
@@ -31,7 +31,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "iJustine",
       followers: "7.2M",
       productCount: 36,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/ijustine/profile.jpg",
       bio: "Tech enthusiast covering Apple products, gadgets, and gaming",
     },
     {
@@ -39,7 +39,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "MKBHD",
       followers: "16.5M",
       productCount: 28,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/mkbhd/profile.jpg",
       bio: "Quality tech videos and in-depth product reviews",
     },
     {
@@ -47,7 +47,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "Unbox Therapy",
       followers: "18.2M",
       productCount: 45,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/unboxtherapy/profile.jpg",
       bio: "Unboxing and reviewing the latest tech gadgets",
     },
     {
@@ -55,7 +55,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "The Verge",
       followers: "3.4M",
       productCount: 32,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/theverge/profile.jpg",
       bio: "The latest in tech news, reviews, and features",
     },
     {
@@ -63,7 +63,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "TechLinked",
       followers: "1.8M",
       productCount: 24,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/techlinked/profile.jpg",
       bio: "Fast-paced tech news and product coverage",
     },
   ],
@@ -73,7 +73,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "Fitness with Pamela",
       followers: "2.4M",
       productCount: 38,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/fitnesswithpamela/profile.jpg",
       bio: "Home workouts, fitness tips, and healthy lifestyle recommendations",
     },
     {
@@ -81,7 +81,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "AthleanX",
       followers: "12.7M",
       productCount: 42,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/athleanx/profile.jpg",
       bio: "Science-based fitness and workout techniques",
     },
     {
@@ -89,7 +89,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "Blogilates",
       followers: "5.8M",
       productCount: 35,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/blogilates/profile.jpg",
       bio: "Pilates workouts and fitness motivation",
     },
     {
@@ -97,7 +97,7 @@ export const influencersByCategory: Record<string, Influencer[]> = {
       name: "Jeff Nippard",
       followers: "3.2M",
       productCount: 28,
-      imageUrl: "/placeholder.svg?height=128&width=128",
+      imageUrl: "/influencers/jeffnippard/profile.jpg",
       bio: "Science-based bodybuilding and strength training",
     },
   ],
