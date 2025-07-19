@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Image from "next/image";
 import { Heart, ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,9 +28,11 @@ export default function ProductCard(
 
   const handleLike = () => {
     setLiked(!liked);
+    sendInteraction("liked");
   };
   const handleAddToCart = () => {
     setIsAdding(true);
+    sendInteraction("clicked");
 
     // Simulate a small delay for better UX
     setTimeout(() => {
@@ -42,6 +44,25 @@ export default function ProductCard(
         position: window.innerWidth <= 768 ? "top-center" : "bottom-right",
       });
     }, 300);
+  };
+
+  // Add tracking for user actions
+  const [isPending, startTransition] = useTransition();
+
+  const sendInteraction = (action: "liked" | "clicked" | "viewed") => {
+    startTransition(async () => {
+      const res = await fetch("/api/track", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action: action, itemKey: product.asin }),
+      });
+
+      if (!res.ok) {
+        console.error("Failed to track interaction");
+      }
+    });
   };
 
   return (
@@ -63,6 +84,7 @@ export default function ProductCard(
           target="_blank"
           rel="noopener noreferrer"
           className={cn("block", layout === "influencer" && "h-full")}
+          onClick={() => sendInteraction("clicked")}
         >
           <Image
             src={product.main_image_url}
