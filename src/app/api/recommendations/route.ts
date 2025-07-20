@@ -69,31 +69,45 @@ async function getTopProducts(
   cursor = 0,
 ): Promise<{ data: Product[]; nextCursor?: number }> {
   const allProducts = await getAllProducts();
-
   const excludeSet = new Set(itemKeysToExclude);
 
-  const scored = allProducts
-    // 1. Filter out already interacted items
-    .filter((product) => !excludeSet.has(product.asin))
-    // 2. Score remaining products
-    .map((product) => {
-      const productVector = productToVector(product.tags ?? []);
-      const score = dotProduct(userVector, productVector);
-      return { product, score };
-    });
+  // 1. Filter out already liked/clicked items
+  const unseenProducts = allProducts.filter((p) => !excludeSet.has(p.asin));
 
-  // Sort by similarity score (descending)
-  scored.sort((a, b) => b.score - a.score);
+  // 2. Score remaining products
+  const scored = unseenProducts.map((product) => {
+    const productVector = productToVector(product.tags ?? []);
+    const score = dotProduct(userVector, productVector);
+    return { product, score };
+  });
 
-  // Paginate results
-  const start = cursor;
-  const selected = scored
-    .slice(start, start + limit)
-    .map((item) => item.product);
+  // 3. Sort by score (desc)
+  const sorted = [...scored].sort((a, b) => b.score - a.score);
+
+  // 4. Decide how many random vs personalized to show
+  const randomCount = Math.floor(limit * 0.4);
+  const personalizedCount = limit - randomCount;
+
+  // 5. Pick random items from the pool
+  const shuffled = [...unseenProducts].sort(() => Math.random() - 0.5);
+  const randomProducts = shuffled.slice(0, randomCount);
+
+  // 6. Pick top personalized items
+  const personalizedProducts = sorted
+    .slice(cursor, cursor + personalizedCount)
+    .map((s) => s.product);
+
+  // 7. Merge and shuffle to interleave them
+  const mixed = [...personalizedProducts, ...randomProducts].sort(
+    () => Math.random() - 0.5,
+  );
+
   const nextCursor =
-    selected.length === limit ? start + selected.length : undefined;
+    personalizedProducts.length === personalizedCount
+      ? cursor + personalizedProducts.length
+      : undefined;
 
-  return { data: selected, nextCursor };
+  return { data: mixed, nextCursor };
 }
 
 export const GET = async (req: Request) => {
