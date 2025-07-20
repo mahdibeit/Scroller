@@ -123,6 +123,7 @@ export const GET = async (req: Request) => {
   const interactedItems = [
     ...userData.liked_item_keys,
     ...userData.clicked_item_keys,
+    ...userData.viewed_item_keys,
   ];
 
   const { data, nextCursor } = await getTopProducts(

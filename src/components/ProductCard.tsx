@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import Image from "next/image";
 import { Heart, ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -46,6 +46,30 @@ export default function ProductCard(
     }, 300);
   };
 
+  // Track when the product card is viewed using Intersection Observer
+  useEffect(() => {
+    let hasSent = false;
+    const card = document.getElementById(`product-card-${product.asin}`);
+    if (!card) return;
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasSent) {
+            sendInteraction("viewed");
+            hasSent = true;
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(card);
+    return () => {
+      observer.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Add tracking for user actions
   const [isPending, startTransition] = useTransition();
 
@@ -67,6 +91,7 @@ export default function ProductCard(
 
   return (
     <div
+      id={`product-card-${product.asin}`}
       className={cn(
         "mb-4 max-w-4xl snap-start overflow-hidden rounded-xl bg-white shadow-md",
         layout === "influencer" && "flex h-[500px] flex-col",
