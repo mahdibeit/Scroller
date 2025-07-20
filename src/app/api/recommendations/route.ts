@@ -4,9 +4,10 @@ import {
   getOrInitUserHistory,
   getOrCreateUserId,
 } from "@/lib/track";
-import { TAGS, type Product } from "@/lib/types";
+import { type Product } from "@/lib/types";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { TAGS } from "@/lib/constants";
 
 // Helper: fetch product by asin from combined_processed.json
 async function getProductByAsin(asin: string): Promise<Product | undefined> {
