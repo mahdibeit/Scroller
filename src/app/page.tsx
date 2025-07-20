@@ -45,45 +45,47 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* How It Works Section */}
         <section className="w-full bg-white py-16">
           <div className="container mx-auto px-4">
             <h2 className="mb-12 text-center text-3xl font-bold">
-              Why ScrollCart?
+              How It Works
             </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="flex flex-col items-center rounded-lg p-6 text-center">
-                <div className="mb-4 rounded-full bg-pink-100 p-3">
-                  <Zap className="h-6 w-6 text-pink-500" />
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+              <div className="flex flex-col items-center px-4 text-center">
+                <div className="mb-4 rounded-full bg-cyan-100 p-4">
+                  <Sparkles className="h-6 w-6 text-cyan-600" />
                 </div>
                 <h3 className="mb-2 text-xl font-semibold">
-                  AI-Powered Curation
+                  Scroll & Interact
                 </h3>
                 <p className="text-gray-600">
-                  Our AI analyzes millions of products to show you items you
-                  will love, even before you know you want them.
+                  Browse your feed and tap or like the products you are
+                  interested in. Every action helps us learn what you like.
                 </p>
               </div>
-              <div className="flex flex-col items-center rounded-lg p-6 text-center">
-                <div className="mb-4 rounded-full bg-orange-100 p-3">
-                  <ShoppingBag className="h-6 w-6 text-orange-500" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">One-Tap Checkout</h3>
-                <p className="text-gray-600">
-                  See something you like? Buy directly from Amazon with just one
-                  tap. No redirects, no hassle.
-                </p>
-              </div>
-              <div className="flex flex-col items-center rounded-lg p-6 text-center">
-                <div className="mb-4 rounded-full bg-purple-100 p-3">
-                  <Sparkles className="h-6 w-6 text-purple-500" />
+              <div className="flex flex-col items-center px-4 text-center">
+                <div className="mb-4 rounded-full bg-teal-100 p-4">
+                  <Zap className="h-6 w-6 text-teal-600" />
                 </div>
                 <h3 className="mb-2 text-xl font-semibold">
-                  Personalized Feed
+                  AI Learns Your Taste
                 </h3>
                 <p className="text-gray-600">
-                  The more you scroll, the smarter we get. Your feed evolves
-                  with your preferences.
+                  Our AI builds a personal profile by analyzing product tags and
+                  comparing them with your activity in real time.
+                </p>
+              </div>
+              <div className="flex flex-col items-center px-4 text-center">
+                <div className="mb-4 rounded-full bg-indigo-100 p-4">
+                  <TrendingUp className="h-6 w-6 text-indigo-600" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold">
+                  Smart Recommendations
+                </h3>
+                <p className="text-gray-600">
+                  Your feed blends personalized and trending items, helping you
+                  discover new favorites effortlessly — no search needed.
                 </p>
               </div>
             </div>
@@ -102,6 +104,52 @@ export default async function Home() {
             </div>
             <div className="mt-8">
               <TrendingProducts />
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section - ShadUI Style */}
+        <section className="bg-muted w-full py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="mb-12 text-left text-3xl font-bold">
+              Why ScrollCart?
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="bg-background rounded-xl border p-6 shadow-sm transition hover:shadow-md">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-teal-100">
+                  <Zap className="h-5 w-5 text-teal-600" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">
+                  AI-Powered Curation
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Our AI analyzes millions of Amazon products and learns your
+                  interests to recommend items you&apos;ll love — even before
+                  you search.
+                </p>
+              </div>
+              <div className="bg-background rounded-xl border p-6 shadow-sm transition hover:shadow-md">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-orange-100">
+                  <ShoppingBag className="h-5 w-5 text-orange-500" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">One-Tap Checkout</h3>
+                <p className="text-muted-foreground text-sm">
+                  Buy directly from Amazon with a single click. No distractions,
+                  redirects, or confusion — just instant checkout.
+                </p>
+              </div>
+              <div className="bg-background rounded-xl border p-6 shadow-sm transition hover:shadow-md">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-purple-100">
+                  <Sparkles className="h-5 w-5 text-purple-600" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold">
+                  Personalized Feed
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Your recommendations evolve as you scroll. The more you
+                  engage, the smarter and more relevant your feed becomes.
+                </p>
+              </div>
             </div>
           </div>
         </section>
