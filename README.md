@@ -2,7 +2,6 @@
 
 # TODO tasks
 
-- [] Figure out the recommendation
 - [] Add location selection
 - [] Add login and save feature
 - [] Improve search to consider whole word "dress" not be in "address"

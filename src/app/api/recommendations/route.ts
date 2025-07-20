@@ -1,9 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  getUserKey,
-  getOrInitUserHistory,
-  getOrCreateUserId,
-} from "@/lib/track";
+import { getOrInitUserHistory, getOrCreateUserId } from "@/lib/track";
 import { type Product } from "@/lib/types";
 import fs from "node:fs/promises";
 import path from "node:path";
