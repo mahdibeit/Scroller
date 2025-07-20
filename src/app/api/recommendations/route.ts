@@ -43,14 +43,79 @@ async function createUserVector(userData: {
   return vector;
 }
 
-export const GET = async () => {
-  // Get userId from cookie or session (assume getUserKey/getOrInitUserHistory handles this)
+function dotProduct(a: number[], b: number[]): number {
+  return a.reduce((sum, val, i) => sum + val * (b[i] ?? 0), 0);
+}
+
+async function getAllProducts(): Promise<Product[]> {
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "combined_processed.json",
+  );
+  const fileText = await fs.readFile(filePath, "utf-8");
+  return JSON.parse(fileText) as Product[];
+}
+
+function productToVector(tags: string[]): number[] {
+  const tagSet = new Set(tags);
+  return TAGS.map((tag) => (tagSet.has(tag) ? 1 : 0));
+}
+
+async function getTopProducts(
+  userVector: number[],
+  itemKeysToExclude: string[],
+  limit = 6,
+  cursor = 0,
+): Promise<{ data: Product[]; nextCursor?: number }> {
+  const allProducts = await getAllProducts();
+
+  const excludeSet = new Set(itemKeysToExclude);
+
+  const scored = allProducts
+    // 1. Filter out already interacted items
+    .filter((product) => !excludeSet.has(product.asin))
+    // 2. Score remaining products
+    .map((product) => {
+      const productVector = productToVector(product.tags ?? []);
+      const score = dotProduct(userVector, productVector);
+      return { product, score };
+    });
+
+  // Sort by similarity score (descending)
+  scored.sort((a, b) => b.score - a.score);
+
+  // Paginate results
+  const start = cursor;
+  const selected = scored
+    .slice(start, start + limit)
+    .map((item) => item.product);
+  const nextCursor =
+    selected.length === limit ? start + selected.length : undefined;
+
+  return { data: selected, nextCursor };
+}
+
+export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url);
+  const limit = parseInt(searchParams.get("limit") ?? "6", 10);
+  const cursor = parseInt(searchParams.get("cursor") ?? "0", 10);
+
   const userId = await getOrCreateUserId();
-  const redisKey = getUserKey(userId);
   const userData = await getOrInitUserHistory(userId);
 
-  // Build user vector
   const userVector = await createUserVector(userData);
 
-  return NextResponse.json({ userVector }, { status: 200 });
+  const interactedItems = [
+    ...userData.liked_item_keys,
+    ...userData.clicked_item_keys,
+  ];
+
+  const { data, nextCursor } = await getTopProducts(
+    userVector,
+    interactedItems,
+    limit,
+    cursor,
+  );
+  return NextResponse.json({ data, nextCursor }, { status: 200 });
 };

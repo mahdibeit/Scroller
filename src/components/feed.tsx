@@ -11,7 +11,10 @@ async function fetchItems({ pageParam = 0 }): Promise<{
   data: Product[];
   nextCursor?: number;
 }> {
-  const res = await fetch(`/api/products?cursor=${pageParam}&limit=6`, {});
+  const res = await fetch(
+    `/api/recommendations?cursor=${pageParam}&limit=6`,
+    {},
+  );
   if (!res.ok) {
     throw new Error("Failed to load items");
   }
