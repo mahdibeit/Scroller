@@ -35,15 +35,18 @@ export async function GET(req: Request) {
         (item) => parseInt(item.price) < parseInt(digits.join(" "), 10),
       );
     } else {
-      // Filter items where description is an array and contains all search parts
-      all = all.filter(
-        (item) =>
-          (Array.isArray(item.description) &&
-            searchParts.every((part) =>
-              item.description.join(" ").toLowerCase().includes(part),
-            )) ||
-          searchParts.every((part) => item.title.toLowerCase().includes(part)),
-      );
+      // Match whole words only (e.g., "dress" not "address" or "dresses")
+      all = all.filter((item) => {
+        const desc = Array.isArray(item.description)
+          ? item.description.join(" ").toLowerCase()
+          : "";
+        const title = item.title.toLowerCase();
+
+        return searchParts.every((part) => {
+          const pattern = new RegExp(`\\b${part}\\b`, "i"); // whole word match
+          return pattern.test(desc) || pattern.test(title);
+        });
+      });
     }
   }
 

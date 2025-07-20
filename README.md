@@ -3,6 +3,6 @@
 # TODO tasks
 
 - [] Add location selection
-- [] Add login and save feature
-- [] Improve search to consider whole word "dress" not be in "address"
-- [] put delay for search so not be activated for each key press
+- [] Scrape more data
+- [] Add more influencer and their data to the main
+- [] Show the liked items
