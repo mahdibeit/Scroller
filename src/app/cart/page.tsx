@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ArrowLeft, ShoppingBag } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { AmazonCheckoutPrompt } from "@/components/checkoutPrompt";
+import { track } from "@vercel/analytics";
 
 // Build the Amazon "Add to Cart" URL for multiple items
 function buildAmazonCartUrl(items: CartItem[]) {
@@ -184,7 +185,10 @@ export default function CartPage() {
                   </div>
 
                   <Button
-                    onClick={handleCheckout}
+                    onClick={() => {
+                      handleCheckout();
+                      track("final_amazon_checkout_button_clicked");
+                    }}
                     className="w-full bg-gradient-to-r from-cyan-900 to-teal-600 hover:from-cyan-800 hover:to-teal-400"
                   >
                     Checkout

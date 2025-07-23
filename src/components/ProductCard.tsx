@@ -8,6 +8,7 @@ import type { Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useCart } from "@/context/cart-context";
+import { track } from "@vercel/analytics";
 
 export function addAssociateTag(originalUrl: string): string {
   const associateTag = process.env.NEXT_PUBLIC_AMZ_ASSOCIATE_TAG!;
@@ -165,7 +166,13 @@ export default function ProductCard(
           )}
         >
           <Button
-            onClick={handleAddToCart}
+            onClick={() => {
+              handleAddToCart();
+              track("added_to_cart_clicked", {
+                asin: product.asin,
+                price: product.price,
+              });
+            }}
             disabled={isAdding}
             className={cn(
               isInCart

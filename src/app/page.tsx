@@ -9,6 +9,8 @@ import {
 import Link from "next/link";
 import HeroProducts from "@/components/HeroProducts";
 import TrendingProducts from "@/components/TrendingProducts";
+import EnhancedStatsSection from "@/components/statsSection";
+import { StartScrollingButton } from "@/components/startScrollingButton";
 
 export default async function Home() {
   return (
@@ -32,9 +34,7 @@ export default async function Home() {
                     size="lg"
                     className="bg-white text-cyan-950 hover:bg-gray-100"
                   >
-                    <Link href="/feed">
-                      Start Scrolling <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
+                    <StartScrollingButton />
                   </Button>
                 </div>
               </div>
@@ -95,20 +95,18 @@ export default async function Home() {
         {/* Trending Products Preview */}
         <section className="w-full bg-gray-50 py-16">
           <div className="container mx-auto px-4">
-            <div className="mb-8 flex items-center justify-between">
-              <h2 className="text-2xl font-bold">Trending Now</h2>
-              <div className="flex items-center text-pink-500">
-                <TrendingUp className="mr-1 h-5 w-5" />
-                <span className="font-medium">Popular items</span>
-              </div>
-            </div>
+            <h2 className="mb-12 text-center text-3xl font-bold">
+              Trending Now
+            </h2>
             <div className="mt-8">
               <TrendingProducts />
             </div>
           </div>
         </section>
 
-        {/* Features Section - ShadUI Style */}
+        <EnhancedStatsSection />
+
+        {/* Features Section*/}
         <section className="bg-muted w-full py-16">
           <div className="container mx-auto px-4">
             <h2 className="mb-12 text-left text-3xl font-bold">
