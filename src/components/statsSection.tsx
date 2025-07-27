@@ -117,7 +117,7 @@ export default function EnhancedStatsSection() {
         <div className="mx-auto mb-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           <StatItem
             icon={<Package className="text-primary h-10 w-10" />}
-            value={897}
+            value={3902}
             suffix="+"
             label="Products Curated"
             description="We’ve combed through Amazon so you don’t have to. Curated by our robot with taste"
