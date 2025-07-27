@@ -22,6 +22,16 @@ async function fetchItems({ pageParam = 0 }): Promise<{
 }
 
 export default function Feed() {
+  // On refresh (first mount), scroll to top
+  useEffect(() => {
+    const nav = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    if (nav?.type === "reload") {
+      window.scrollTo(0, 0);
+      sessionStorage.removeItem(STORAGE_KEY); // Clear saved scroll position
+    }
+  }, []);
   // 1. Set up useInfiniteQuery
   const {
     data,
