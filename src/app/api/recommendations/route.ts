@@ -122,9 +122,7 @@ function combineEmbeddings(
 }
 
 // Main function: create user vector with time-decayed weighted embeddings
-export async function createUserVector(
-  userData: UserActivity,
-): Promise<number[]> {
+async function createUserVector(userData: UserActivity): Promise<number[]> {
   const filePath = path.join(
     process.cwd(),
     "public",
