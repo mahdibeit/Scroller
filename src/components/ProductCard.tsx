@@ -33,7 +33,7 @@ export default function ProductCard(
   };
   const handleAddToCart = () => {
     setIsAdding(true);
-    sendInteraction("clicked");
+    sendInteraction("added_to_cart");
 
     // Simulate a small delay for better UX
     setTimeout(() => {
@@ -74,14 +74,27 @@ export default function ProductCard(
   // Add tracking for user actions
   const [isPending, startTransition] = useTransition();
 
-  const sendInteraction = (action: "liked" | "clicked" | "viewed") => {
+  const sendInteraction = (
+    action: "liked" | "clicked" | "viewed" | "added_to_cart",
+    time_spent?: number,
+  ) => {
     startTransition(async () => {
+      let body: string;
+      if (action === "viewed") {
+        body = JSON.stringify({
+          action: action,
+          asin: product.asin,
+          time_spent: time_spent,
+        });
+      } else {
+        body = JSON.stringify({ action: action, asin: product.asin });
+      }
       const res = await fetch("/api/track", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ action: action, itemKey: product.asin }),
+        body: body,
       });
 
       if (!res.ok) {

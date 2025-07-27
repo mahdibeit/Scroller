@@ -7,15 +7,17 @@ import { NextResponse } from "next/server";
 export const redis = Redis.fromEnv();
 
 export type UserActivity = {
-  liked_item_keys: string[];
-  clicked_item_keys: string[];
-  viewed_item_keys: string[];
+  liked_item_keys: Record<string, { timestamp: string }>;
+  clicked_item_keys: Record<string, { timestamp: string }>;
+  viewed_item_keys: Record<string, { timestamp: string; time_spent: number }>;
+  added_to_cart: Record<string, { timestamp: string }>;
 };
 
 const DEFAULT_HISTORY: UserActivity = {
-  liked_item_keys: [],
-  clicked_item_keys: [],
-  viewed_item_keys: [],
+  liked_item_keys: {},
+  clicked_item_keys: {},
+  viewed_item_keys: {},
+  added_to_cart: {},
 };
 
 export function getUserKey(id: string) {

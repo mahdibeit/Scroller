@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { getOrInitUserHistory, getOrCreateUserId } from "@/lib/track";
+import {
+  getOrInitUserHistory,
+  getOrCreateUserId,
+  type UserActivity,
+} from "@/lib/track";
 import { type Product } from "@/lib/types";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -43,12 +47,14 @@ async function loadFloat32Embeddings(
   return parseFloat32Embeddings(floatArray, dim);
 }
 
-async function createUserVector(userData: {
-  liked_item_keys: string[];
-  clicked_item_keys: string[];
-}): Promise<number[]> {
-  const itemKeys = [...userData.liked_item_keys, ...userData.clicked_item_keys];
-
+async function createUserVector(userData: UserActivity): Promise<number[]> {
+  // Combine keys from all activity types
+  const itemKeys = [
+    ...Object.keys(userData.liked_item_keys),
+    ...Object.keys(userData.clicked_item_keys),
+    ...Object.keys(userData.viewed_item_keys),
+    ...Object.keys(userData.added_to_cart),
+  ];
   const filePath = path.join(
     process.cwd(),
     "public",
@@ -191,9 +197,10 @@ export const GET = async (req: Request) => {
   }
 
   const interactedItems = [
-    ...userData.liked_item_keys,
-    ...userData.clicked_item_keys,
-    ...userData.viewed_item_keys,
+    ...Object.keys(userData.liked_item_keys),
+    ...Object.keys(userData.clicked_item_keys),
+    ...Object.keys(userData.viewed_item_keys),
+    ...Object.keys(userData.added_to_cart),
   ];
 
   const { data, nextCursor } = await getTopProducts(
