@@ -70,9 +70,9 @@ function computeNormalizedDecayWeights(
 function categorizeViewTime(
   timeSpent: number,
 ): "ignore" | "negative" | "neutral" | "positive" {
-  if (timeSpent < 2) return "ignore";
-  if (timeSpent < 4) return "negative"; // 2–3 seconds
-  if (timeSpent <= 5) return "neutral"; // 4–5 seconds
+  if (timeSpent < 4) return "ignore";
+  // if (timeSpent < 4) return "negative"; // 2–3 seconds
+  // if (timeSpent <= 5) return "neutral"; // 4–5 seconds
   return "positive"; // >5 seconds
 }
 
