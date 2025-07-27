@@ -38,7 +38,7 @@ function parseFloat32Embeddings(
   return embeddings;
 }
 
-export async function loadFloat32Embeddings(
+async function loadFloat32Embeddings(
   url: string,
   dim: number,
 ): Promise<Float32Array[]> {
