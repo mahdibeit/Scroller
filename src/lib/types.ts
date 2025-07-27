@@ -12,4 +12,5 @@ export interface Product {
   scraped_at: string;
   review_count: number;
   tags: string[];
+  embedding_index: number;
 }

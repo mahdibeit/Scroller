@@ -1,3 +1,6 @@
+export const EMBEDDING_DIM = 1024;
+export const EMBEDDINGS_URL = "/embeddings.bin";
+
 export interface Influencer {
   id: string;
   name: string;
@@ -226,3 +229,5 @@ export const TAGS = [
   "furniture",
   "snack",
 ];
+
+export const QWEN_EMBEDDING_SIZE_1B = 1024;

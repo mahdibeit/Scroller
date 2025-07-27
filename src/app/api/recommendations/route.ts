@@ -3,44 +3,112 @@ import { getOrInitUserHistory, getOrCreateUserId } from "@/lib/track";
 import { type Product } from "@/lib/types";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { TAGS } from "@/lib/constants";
+import {
+  EMBEDDING_DIM,
+  EMBEDDINGS_URL,
+  QWEN_EMBEDDING_SIZE_1B,
+} from "@/lib/constants";
 
-// Helper: fetch product by asin from combined_processed.json
-async function getProductByAsin(asin: string): Promise<Product | undefined> {
+// Fetch binary file and return ArrayBuffer
+async function fetchBinaryFile(): Promise<ArrayBuffer> {
+  const filePath = path.join(process.cwd(), "public", "embeddings.bin");
+  const fileBuffer = await fs.readFile(filePath);
+  return fileBuffer.buffer.slice(
+    fileBuffer.byteOffset,
+    fileBuffer.byteOffset + fileBuffer.byteLength,
+  );
+}
+
+// Parse entire buffer into array of Float32Array embeddings
+function parseFloat32Embeddings(
+  buffer: ArrayBuffer,
+  dim: number,
+): Float32Array[] {
+  const floatArray = new Float32Array(buffer);
+  const embeddings: Float32Array[] = [];
+
+  for (let i = 0; i < floatArray.length; i += dim) {
+    embeddings.push(floatArray.subarray(i, i + dim));
+  }
+
+  return embeddings;
+}
+
+// Load embeddings from URL
+async function loadFloat32Embeddings(
+  url: string,
+  dim: number,
+): Promise<Float32Array[]> {
+  const buffer = await fetchBinaryFile();
+  return parseFloat32Embeddings(buffer, dim);
+}
+
+async function createUserVector(userData: {
+  liked_item_keys: string[];
+  clicked_item_keys: string[];
+}): Promise<number[]> {
+  const itemKeys = [...userData.liked_item_keys, ...userData.clicked_item_keys];
+
   const filePath = path.join(
     process.cwd(),
     "public",
     "combined_processed.json",
   );
   const fileText = await fs.readFile(filePath, "utf-8");
-  const all: Product[] = JSON.parse(fileText) as Product[];
-  return all.find((p) => p.asin === asin);
-}
+  const allProducts: Product[] = JSON.parse(fileText) as Product[];
 
-async function createUserVector(userData: {
-  liked_item_keys: string[];
-  clicked_item_keys: string[];
-}) {
-  const itemKeys = [...userData.liked_item_keys, ...userData.clicked_item_keys];
-  const tagCounts: Record<string, number> = {};
+  const embeddings: number[][] = [];
+
+  // Load embeddings once outside the loop
+  const bin_embeddings = await loadFloat32Embeddings(
+    EMBEDDINGS_URL,
+    EMBEDDING_DIM,
+  );
 
   for (const itemId of itemKeys) {
-    const product = await getProductByAsin(itemId);
-    if (product?.tags) {
-      for (const tag of product.tags) {
-        tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
-      }
+    const embedding_index = allProducts.find(
+      (p) => p.asin === itemId,
+    )?.embedding_index;
+    if (embedding_index === undefined) continue;
+
+    const emb = bin_embeddings[embedding_index];
+    if (emb) {
+      embeddings.push(Array.from(emb));
     }
   }
 
-  // Create a vector based on the predefined tag list
-  const vector = TAGS.map((tag) => tagCounts[tag] ?? 0);
+  if (embeddings.length === 0) {
+    return new Array(QWEN_EMBEDDING_SIZE_1B).fill(0) as number[];
+  }
 
-  return vector;
+  const dim = embeddings[0]!.length;
+  const avg = new Float32Array(dim);
+
+  // Sum embeddings
+  for (const emb of embeddings) {
+    for (let i = 0; i < dim; i++) {
+      // @ts-expect-error its ok
+      avg[i] += emb[i];
+    }
+  }
+
+  // Average
+  const len = embeddings.length;
+  for (let i = 0; i < dim; i++) {
+    // @ts-expect-error its ok
+    avg[i] /= len;
+  }
+
+  return Array.from(avg);
 }
 
-function dotProduct(a: number[], b: number[]): number {
-  return a.reduce((sum, val, i) => sum + val * (b[i] ?? 0), 0);
+function cosineSimilarity(a: Float32Array, b: Float32Array): number {
+  let dot = 0;
+  for (let i = 0; i < a.length; i++) {
+    // @ts-expect-error its ok
+    dot += a[i] * b[i];
+  }
+  return dot; // Assuming vectors are normalized
 }
 
 async function getAllProducts(): Promise<Product[]> {
@@ -53,11 +121,6 @@ async function getAllProducts(): Promise<Product[]> {
   return JSON.parse(fileText) as Product[];
 }
 
-function productToVector(tags: string[]): number[] {
-  const tagSet = new Set(tags);
-  return TAGS.map((tag) => (tagSet.has(tag) ? 1 : 0));
-}
-
 async function getTopProducts(
   userVector: number[],
   itemKeysToExclude: string[],
@@ -67,33 +130,36 @@ async function getTopProducts(
   const allProducts = await getAllProducts();
   const excludeSet = new Set(itemKeysToExclude);
 
-  // 1. Filter out already liked/clicked items
   const unseenProducts = allProducts.filter((p) => !excludeSet.has(p.asin));
 
-  // 2. Score remaining products
+  const bin_embeddings = await loadFloat32Embeddings(
+    EMBEDDINGS_URL,
+    EMBEDDING_DIM,
+  );
+
+  const userVectorTyped = new Float32Array(userVector);
   const scored = unseenProducts.map((product) => {
-    const productVector = productToVector(product.tags ?? []);
-    const score = dotProduct(userVector, productVector);
-    return { product, score };
+    const emb = bin_embeddings[product.embedding_index];
+    if (emb) {
+      const productVector = new Float32Array(emb);
+      const score = cosineSimilarity(userVectorTyped, productVector);
+      return { product, score };
+    } else {
+      return { product, score: -Infinity };
+    }
   });
 
-  // 3. Sort by score (desc)
   const sorted = [...scored].sort((a, b) => b.score - a.score);
 
-  // 4. Decide how many random vs personalized to show
   const randomCount = Math.floor(limit * 0.4);
   const personalizedCount = limit - randomCount;
-
-  // 5. Pick random items from the pool
-  const shuffled = [...unseenProducts].sort(() => Math.random() - 0.5);
-  const randomProducts = shuffled.slice(0, randomCount);
-
-  // 6. Pick top personalized items
   const personalizedProducts = sorted
     .slice(cursor, cursor + personalizedCount)
     .map((s) => s.product);
 
-  // 7. Merge and shuffle to interleave them
+  const shuffled = [...unseenProducts].sort(() => Math.random() - 0.5);
+  const randomProducts = shuffled.slice(0, randomCount);
+
   const mixed = [...personalizedProducts, ...randomProducts].sort(
     () => Math.random() - 0.5,
   );
@@ -112,9 +178,17 @@ export const GET = async (req: Request) => {
   const cursor = parseInt(searchParams.get("cursor") ?? "0", 10);
 
   const userId = await getOrCreateUserId();
+
   const userData = await getOrInitUserHistory(userId);
 
   const userVector = await createUserVector(userData);
+
+  if (userVector.length === 0) {
+    return NextResponse.json(
+      { data: [], nextCursor: undefined },
+      { status: 200 },
+    );
+  }
 
   const interactedItems = [
     ...userData.liked_item_keys,
@@ -128,5 +202,6 @@ export const GET = async (req: Request) => {
     limit,
     cursor,
   );
+
   return NextResponse.json({ data, nextCursor }, { status: 200 });
 };
