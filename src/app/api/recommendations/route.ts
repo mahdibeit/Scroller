@@ -12,6 +12,7 @@ import {
   EMBEDDINGS_URL,
   QWEN_EMBEDDING_SIZE_1B,
 } from "@/lib/constants";
+import { createUserVector } from "./uservector";
 
 // Fetch binary file and return Float32Array
 async function fetchBinaryFloat32Array(): Promise<Float32Array> {
@@ -38,74 +39,12 @@ function parseFloat32Embeddings(
   return embeddings;
 }
 
-// Full loader
-async function loadFloat32Embeddings(
+export async function loadFloat32Embeddings(
   url: string,
   dim: number,
 ): Promise<Float32Array[]> {
   const floatArray = await fetchBinaryFloat32Array();
   return parseFloat32Embeddings(floatArray, dim);
-}
-
-async function createUserVector(userData: UserActivity): Promise<number[]> {
-  // Combine keys from all activity types
-  const itemKeys = [
-    ...Object.keys(userData.liked_item_keys),
-    ...Object.keys(userData.clicked_item_keys),
-    ...Object.keys(userData.viewed_item_keys),
-    ...Object.keys(userData.added_to_cart),
-  ];
-  const filePath = path.join(
-    process.cwd(),
-    "public",
-    "combined_processed.json",
-  );
-  const fileText = await fs.readFile(filePath, "utf-8");
-  const allProducts: Product[] = JSON.parse(fileText) as Product[];
-
-  const embeddings: number[][] = [];
-
-  // Load embeddings once outside the loop
-  const bin_embeddings = await loadFloat32Embeddings(
-    EMBEDDINGS_URL,
-    EMBEDDING_DIM,
-  );
-
-  for (const itemId of itemKeys) {
-    const embedding_index = allProducts.find(
-      (p) => p.asin === itemId,
-    )?.embedding_index;
-    if (embedding_index === undefined) continue;
-
-    const emb = bin_embeddings[embedding_index];
-    if (emb) {
-      embeddings.push(Array.from(emb));
-    }
-  }
-
-  if (embeddings.length === 0) {
-    return new Array(QWEN_EMBEDDING_SIZE_1B).fill(0) as number[];
-  }
-
-  const dim = embeddings[0]!.length;
-  const avg = new Float32Array(dim);
-
-  // Sum embeddings
-  for (const emb of embeddings) {
-    for (let i = 0; i < dim; i++) {
-      // @ts-expect-error its ok
-      avg[i] += emb[i];
-    }
-  }
-
-  // Average
-  const len = embeddings.length;
-  for (let i = 0; i < dim; i++) {
-    // @ts-expect-error its ok
-    avg[i] /= len;
-  }
-
-  return Array.from(avg);
 }
 
 function cosineSimilarity(a: Float32Array, b: Float32Array): number {
