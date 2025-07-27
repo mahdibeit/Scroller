@@ -9,38 +9,38 @@ import {
   QWEN_EMBEDDING_SIZE_1B,
 } from "@/lib/constants";
 
-// Fetch binary file and return ArrayBuffer
-async function fetchBinaryFile(): Promise<ArrayBuffer> {
+// Fetch binary file and return Float32Array
+async function fetchBinaryFloat32Array(): Promise<Float32Array> {
   const filePath = path.join(process.cwd(), "public", "embeddings.bin");
-  const fileBuffer = await fs.readFile(filePath);
-  return fileBuffer.buffer.slice(
-    fileBuffer.byteOffset,
-    fileBuffer.byteOffset + fileBuffer.byteLength,
-  );
-}
+  const fileBuffer = await fs.readFile(filePath); // Node Buffer
+  const floatArray = new Float32Array(fileBuffer.length / 4);
 
-// Parse entire buffer into array of Float32Array embeddings
-function parseFloat32Embeddings(
-  buffer: ArrayBuffer,
-  dim: number,
-): Float32Array[] {
-  const floatArray = new Float32Array(buffer);
-  const embeddings: Float32Array[] = [];
-
-  for (let i = 0; i < floatArray.length; i += dim) {
-    embeddings.push(floatArray.subarray(i, i + dim));
+  for (let i = 0; i < floatArray.length; i++) {
+    floatArray[i] = fileBuffer.readFloatLE(i * 4); // readFloatBE if needed
   }
 
+  return floatArray;
+}
+
+// Parse into array of Float32Array embeddings
+function parseFloat32Embeddings(
+  flatArray: Float32Array,
+  dim: number,
+): Float32Array[] {
+  const embeddings: Float32Array[] = [];
+  for (let i = 0; i < flatArray.length; i += dim) {
+    embeddings.push(flatArray.subarray(i, i + dim));
+  }
   return embeddings;
 }
 
-// Load embeddings from URL
+// Full loader
 async function loadFloat32Embeddings(
   url: string,
   dim: number,
 ): Promise<Float32Array[]> {
-  const buffer = await fetchBinaryFile();
-  return parseFloat32Embeddings(buffer, dim);
+  const floatArray = await fetchBinaryFloat32Array();
+  return parseFloat32Embeddings(floatArray, dim);
 }
 
 async function createUserVector(userData: {
@@ -131,6 +131,7 @@ async function getTopProducts(
   const excludeSet = new Set(itemKeysToExclude);
 
   const unseenProducts = allProducts.filter((p) => !excludeSet.has(p.asin));
+  const shuffledunseenProducts = unseenProducts.sort(() => Math.random() - 0.5);
 
   const bin_embeddings = await loadFloat32Embeddings(
     EMBEDDINGS_URL,
@@ -138,7 +139,7 @@ async function getTopProducts(
   );
 
   const userVectorTyped = new Float32Array(userVector);
-  const scored = unseenProducts.map((product) => {
+  const scored = shuffledunseenProducts.map((product) => {
     const emb = bin_embeddings[product.embedding_index];
     if (emb) {
       const productVector = new Float32Array(emb);
@@ -157,12 +158,11 @@ async function getTopProducts(
     .slice(cursor, cursor + personalizedCount)
     .map((s) => s.product);
 
-  const shuffled = [...unseenProducts].sort(() => Math.random() - 0.5);
+  const shuffled = [...shuffledunseenProducts].sort(() => Math.random() - 0.5);
   const randomProducts = shuffled.slice(0, randomCount);
-
-  const mixed = [...personalizedProducts, ...randomProducts].sort(
-    () => Math.random() - 0.5,
-  );
+  const mixed = [...personalizedProducts, ...randomProducts]
+    .filter((p, i, arr) => arr.findIndex((x) => x.asin === p.asin) === i) // deduplicate by asin
+    .sort(() => Math.random() - 0.5);
 
   const nextCursor =
     personalizedProducts.length === personalizedCount
