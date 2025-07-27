@@ -18,8 +18,9 @@ export function addAssociateTag(originalUrl: string): string {
 }
 
 export default function ProductCard(
-  props: Product & { layout?: "influencer" },
+  props: Product & { layout?: "influencer"; track_products?: boolean },
 ) {
+  const { track_products = false } = props;
   const { layout, ...product } = props;
   const [liked, setLiked] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
@@ -50,15 +51,23 @@ export default function ProductCard(
   // Track when the product card is viewed using Intersection Observer
   useEffect(() => {
     let hasSent = false;
+    let viewStart: number | null = null;
     const card = document.getElementById(`product-card-${product.asin}`);
     if (!card) return;
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasSent) {
-            sendInteraction("viewed");
-            hasSent = true;
-            observer.disconnect();
+          if (entry.isIntersecting) {
+            if (!hasSent && viewStart === null) {
+              viewStart = Date.now();
+            }
+          } else {
+            if (!hasSent && viewStart !== null) {
+              const timeSpent = Math.round((Date.now() - viewStart) / 1000); // seconds
+              sendInteraction("viewed", timeSpent);
+              hasSent = true;
+              observer.disconnect();
+            }
           }
         });
       },
@@ -78,29 +87,31 @@ export default function ProductCard(
     action: "liked" | "clicked" | "viewed" | "added_to_cart",
     time_spent?: number,
   ) => {
-    startTransition(async () => {
-      let body: string;
-      if (action === "viewed") {
-        body = JSON.stringify({
-          action: action,
-          asin: product.asin,
-          time_spent: time_spent,
+    if (track_products) {
+      startTransition(async () => {
+        let body: string;
+        if (action === "viewed") {
+          body = JSON.stringify({
+            action: action,
+            asin: product.asin,
+            time_spent: time_spent,
+          });
+        } else {
+          body = JSON.stringify({ action: action, asin: product.asin });
+        }
+        const res = await fetch("/api/track", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: body,
         });
-      } else {
-        body = JSON.stringify({ action: action, asin: product.asin });
-      }
-      const res = await fetch("/api/track", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: body,
-      });
 
-      if (!res.ok) {
-        console.error("Failed to track interaction");
-      }
-    });
+        if (!res.ok) {
+          console.error("Failed to track interaction");
+        }
+      });
+    }
   };
 
   return (

@@ -100,8 +100,12 @@ export default function Feed() {
   return (
     <div className="grid grid-rows-1 items-center justify-center gap-4 p-4 md:grid-cols-1">
       <div className="grid grid-cols-1 items-center justify-center gap-4 p-4">
-        {allItems.map((product) => (
-          <ProductCard key={product.id} {...product} />
+        {allItems.map((product, idx) => (
+          <ProductCard
+            key={product.id}
+            {...product}
+            track_products={idx !== 0}
+          />
         ))}
 
         {/* 8. This div is the “sentinel” that triggers more loading */}

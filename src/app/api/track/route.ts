@@ -31,7 +31,7 @@ export const POST = async (req: Request) => {
   ) {
     const key = `${action}_item_keys` as keyof UserActivity;
     if (action === "viewed") {
-      console.log(`time_spent: ${time_spent}`);
+      console.log(`time_spent: ${time_spent}`, "asin:", asin);
       userData[key][asin] ??= {
         timestamp: new Date().toISOString(),
         time_spent: time_spent,
