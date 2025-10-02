@@ -1,9 +1,35 @@
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import InfluencerProducts from "@/components/InfluencerProducts";
 import { categoryNames, influencersByCategory } from "@/lib/constants";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { influencerId: string };
+}): Promise<Metadata> {
+  const influencer = findInfluencer(params.influencerId);
+
+  if (!influencer) {
+    return {
+      title: "Influencer Not Found - ScrollCart",
+      description: "The requested influencer page could not be found.",
+    };
+  }
+
+  return {
+    title: `${influencer.name}'s Picks - ScrollCart`,
+    description: `Shop ${influencer.name}'s curated collection of ${influencer.category.toLowerCase()} products. Discover their favorite items and recommendations.`,
+    openGraph: {
+      title: `${influencer.name}'s Product Picks on ScrollCart`,
+      description: `Shop ${influencer.name}'s curated collection of ${influencer.category.toLowerCase()} products.`,
+      images: [{ url: influencer.imageUrl, width: 800, height: 600 }],
+    },
+  };
+}
 
 // Find influencer in any category
 function findInfluencer(id: string) {

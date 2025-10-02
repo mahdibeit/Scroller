@@ -10,8 +10,39 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "ScrollCart - Scroll. Discover. Shop.",
-  description: "AI-curated Amazon shopping feed with one-tap checkout",
+  description:
+    "AI-curated Amazon shopping feed with one-tap checkout. Discover trending products recommended by top influencers and shop with ease.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  keywords: [
+    "shopping",
+    "amazon products",
+    "influencer recommendations",
+    "one-tap checkout",
+    "AI shopping",
+    "product discovery",
+  ],
+  applicationName: "ScrollCart",
+  authors: [{ name: "ScrollCart Team" }],
+  creator: "ScrollCart",
+  publisher: "ScrollCart",
+  robots: "index, follow",
+  themeColor: "#ffffff",
+  viewport: "width=device-width, initial-scale=1",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://scrollcart.app",
+    title: "ScrollCart - Scroll. Discover. Shop.",
+    description:
+      "AI-curated Amazon shopping feed with one-tap checkout. Discover trending products recommended by top influencers.",
+    siteName: "ScrollCart",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ScrollCart - Scroll. Discover. Shop.",
+    description: "AI-curated Amazon shopping feed with one-tap checkout",
+    creator: "@scrollcart",
+  },
 };
 
 const geist = Geist({

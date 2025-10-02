@@ -7,10 +7,23 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import HeroProducts from "@/components/HeroProducts";
 import TrendingProducts from "@/components/TrendingProducts";
 import EnhancedStatsSection from "@/components/statsSection";
 import { StartScrollingButton } from "@/components/startScrollingButton";
+
+export const metadata: Metadata = {
+  title: "ScrollCart - AI-Powered Shopping Discovery Platform",
+  description:
+    "Experience a new way of shopping with AI-curated products and influencer recommendations. Discover trending items, get personalized suggestions, and enjoy one-tap checkout.",
+  openGraph: {
+    title: "ScrollCart - AI-Powered Shopping Discovery Platform",
+    description:
+      "Experience a new way of shopping with AI-curated products and influencer recommendations.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+};
 
 export default async function Home() {
   return (
