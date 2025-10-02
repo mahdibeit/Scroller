@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "ScrollCart - Scroll. Discover. Shop.",
     description:
       "AI-curated Amazon shopping feed with one-tap checkout. Discover trending products recommended by top influencers and shop with ease.",
-    url: "https://scrollcart.com",
+    url: "https://scrollcart.app",
     siteName: "ScrollCart",
     images: [
       {
@@ -65,21 +65,6 @@ export const metadata: Metadata = {
     description: "AI-curated Amazon shopping feed with one-tap checkout",
     creator: "@scrollcart",
     images: ["/twitter-image.jpg"],
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://scrollcart.app",
-    title: "ScrollCart - Scroll. Discover. Shop.",
-    description:
-      "AI-curated Amazon shopping feed with one-tap checkout. Discover trending products recommended by top influencers.",
-    siteName: "ScrollCart",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ScrollCart - Scroll. Discover. Shop.",
-    description: "AI-curated Amazon shopping feed with one-tap checkout",
-    creator: "@scrollcart",
   },
 };
 

@@ -9,9 +9,10 @@ import { categoryNames, influencersByCategory } from "@/lib/constants";
 export async function generateMetadata({
   params,
 }: {
-  params: { influencerId: string };
+  params: Promise<{ influencerId: string }>;
 }): Promise<Metadata> {
-  const influencer = findInfluencer(params.influencerId);
+  const { influencerId } = await params;
+  const influencer = findInfluencer(influencerId);
 
   if (!influencer) {
     return {
